@@ -1,0 +1,34 @@
+#+title: Greg Newman's Emacs Configuration
+* My emacs config is written in org-babel, using literate programming
+a for better documented emacs config.
+** TODOs
+- Add Solarized light theme
+- Add line numbers
+** Setup package manager for emacs modes.  After looking at the options
+I'm using Marmalade.  I don't want to be using bleeding edge which it
+seems MELPA uses since it links directly the git repos.
+#+BEGIN_src emacs-lisp :tangle yes
+(require 'package)
+;; Add the original Emacs Lisp Package Archive
+(add-to-list 'package-archives
+             '("elpa" . "http://tromey.com/elpa/"))
+;; Add the user-contributed repository
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+#+end_src
+** Add the Solarized-light theme and consider the custom themes safe.
+#+BEGIN_src emacs-lisp :tangle yes
+(setq custom-safe-themes t)
+(package-initialize)
+(load-theme 'solarized-light)
+#+end_src
+** Backups in the current directory are annoying.  Let's move those to
+a central location.  I'm not worried about disk space here.
+#+BEGIN_src emacs-lisp :tangle yes
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq delete-old-versions -1)
+(setq version-control t)
+(setq vc-make-backup-files t)
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+#+end_src
+
