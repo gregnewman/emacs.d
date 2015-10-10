@@ -5,7 +5,7 @@ a for better documented emacs config.
 - Add Anaconda for Python development
 - Setup Org-mode
 ** Packages I have installed
-- Wolarized
+- Solarized
 - Zenburn
 - Org-mode
 - Virtualenvwrapper
