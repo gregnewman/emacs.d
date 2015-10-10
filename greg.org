@@ -32,3 +32,23 @@ a central location.  I'm not worried about disk space here.
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 #+end_src
 
+** Windows Configuration
+Hide things when emacs starts up, namely the tooltips, toolbar dn scrollbar.
+#+BEGIN_src emacs-lisp :tangle yes
+(when window-system
+  (tooltip-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode 1)
+  (scroll-bar-mode -1))
+#+end_src
+** Line numbers, gutters, line highlighting and default tabs
+Show line number in the left gutter and highlight current line
+Set default tabs to 4.  Highlight line.  There are a number of
+packages for highlighting the current line but hi-line is already
+included and works fine.  No more cruft than needed.
+#+BEGIN_src emacs-lisp :tangle yes
+(global-linum-mode 1)
+(setq column-number-mode  t)
+(global-hl-line-mode 1)
+(setq-default default-tab-width 4)
+#+end_src
