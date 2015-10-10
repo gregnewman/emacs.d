@@ -2,8 +2,8 @@
 * My emacs config is written in org-babel, using literate programming
 a for better documented emacs config.
 ** TODOs
-- Add Solarized light theme
-- Add line numbers
+- Add Anaconda for Python development
+- Setup Org-mode
 ** Setup package manager for emacs modes.  After looking at the options
 I'm using Marmalade.  I don't want to be using bleeding edge which it
 seems MELPA uses since it links directly the git repos.
