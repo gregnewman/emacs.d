@@ -15,6 +15,8 @@ seems MELPA uses since it links directly the git repos.
 ;; Add the user-contributed repository
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 #+end_src
 ** Add the Solarized-light theme and consider the custom themes safe.
 #+BEGIN_src emacs-lisp :tangle yes
