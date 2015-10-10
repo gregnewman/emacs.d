@@ -52,3 +52,11 @@ included and works fine.  No more cruft than needed.
 (global-hl-line-mode 1)
 (setq-default default-tab-width 4)
 #+end_src
+** I hate that emacs opens at the top left of my screen and a tiny
+frame.  SEt a default width, height and location
+#+BEGIN_src emacs-lisp :tangle yes
+(setq initial-frame-alist '((top . 50) 
+                            (left . 200) 
+                            (width . 100) 
+                            (height . 40)))
+#+end_src
