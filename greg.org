@@ -56,17 +56,22 @@
   (menu-bar-mode 1)
   (scroll-bar-mode -1))
 #+end_src
-** Little enhancements for coding
+** Basics and general settings
    Show line number in the left gutter and highlight current line
    Set default tabs to 4.  Highlight line.  There are a number of
    packages for highlighting the current line but hi-line is already
    included and works fine.  No more cruft than needed.
    Mark the column at 80 for python.
 #+BEGIN_src emacs-lisp :tangle yes
+; Set line numbers
 (global-linum-mode 1)
+; column numbers
 (setq column-number-mode  t)
+; highlight current line
 (global-hl-line-mode 1)
+; default tab width
 (setq-default default-tab-width 4)
+; show lines that are longer than 79 columns
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
@@ -151,7 +156,7 @@
 #+end_src
 ** iBuffer-mode
    I used this in the past minimally.  Need to work with it more extensively
-#+BEGIN_src emacs-lisp :tangle yes
+#+Begin_src emacs-lisp :tangle yes
 (global-set-key (kbd "C-x C-b") 'ibuffer)
    (autoload 'ibuffer "ibuffer" "List buffers." t)
 #+end_src
