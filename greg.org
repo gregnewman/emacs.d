@@ -25,11 +25,10 @@ seems MELPA uses since it links directly the git repos.
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 #+end_src
-** Add the Zenburn theme and consider the custom themes safe.
+** Add the Leuven theme and consider the custom themes safe.
 #+BEGIN_src emacs-lisp :tangle yes
-(setq custom-safe-themes t)
 (package-initialize)
-(load-theme 'zenburn)
+(load-theme 'leuven t)
 #+end_src
 ** Backups in the current directory are annoying.  Let's move those to
 a central location.  I'm not worried about disk space here.
@@ -89,7 +88,6 @@ readthedocs.org!!
 ;; Fixing another key binding bug in iedit mode
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 #+end_src
-
 ** IDO
 Because it saves time
 #+BEGIN_src emacs-lisp :tangle yes
@@ -97,4 +95,16 @@ Because it saves time
 (require 'ido)
 (ido-mode t)
 (setq ido-enable-flex-matching t)
+#+end_src
+** Deft
+I use nValt constantly for taking notes and use Notesy on the iPhone for reading
+or doing small edits.  I'm going to try using Deft to connect to those notes and 
+write them in org format.
+#+BEGIN_src emacs-lisp :tangle yes
+(require 'deft)
+(setq deft-extensions '("org" "txt" "tex"))
+(setq deft-directory "~/Dropbox/notesy")
+(setq deft-text-mode 'org-mode)
+(setq deft-use-filename-as-title t)
+(global-set-key [f1] 'deft)
 #+end_src
