@@ -196,3 +196,16 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
    (autoload 'ibuffer "ibuffer" "List buffers." t)
 #+end_src
+** elisp
+  Configuration for elisp programming.
+
+  Turn on paredit and eldoc when possible. Very useful.
+#+BEGIN_SRC emacs-lisp tangle: yes
+(defun my/turn-on-paredit-and-eldoc ()
+  (interactive)
+  (paredit-mode 1)
+  (eldoc-mode 1))
+
+(add-hook 'emacs-lisp-mode-hook #'my/turn-on-paredit-and-eldoc)
+(add-hook 'ielm-mode-hook #'my/turn-on-paredit-and-eldoc)
+#+end_src
