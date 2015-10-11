@@ -50,16 +50,20 @@ Hide things when emacs starts up, namely the tooltips, toolbar dn scrollbar.
   (menu-bar-mode 1)
   (scroll-bar-mode -1))
 #+end_src
-** Line numbers, gutters, line highlighting and default tabs
+** Line numbers, gutters, line highlighting and default tabs, column markers
 Show line number in the left gutter and highlight current line
 Set default tabs to 4.  Highlight line.  There are a number of
 packages for highlighting the current line but hi-line is already
 included and works fine.  No more cruft than needed.
+Mark the column at 80 for python.
 #+BEGIN_src emacs-lisp :tangle yes
 (global-linum-mode 1)
 (setq column-number-mode  t)
 (global-hl-line-mode 1)
 (setq-default default-tab-width 4)
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
 #+end_src
 ** I hate that emacs opens at the top left of my screen and a tiny
 frame.  SEt a default width, height and location
@@ -82,3 +86,11 @@ readthedocs.org!!
 (elpy-enable)
 #+end_src
 
+** IDO
+Because it saves time
+#+BEGIN_src emacs-lisp :tangle yes
+;; IDO rules
+(require 'ido)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+#+end_src
