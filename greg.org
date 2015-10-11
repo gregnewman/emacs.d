@@ -1,5 +1,6 @@
 #+title: Emacs Configuration
-My emacs config is written in org-babel, using literate programming a for better documented emacs config.
+My emacs config is written in org-babel, using literate programming a for better
+documented emacs config.
 ** TODOs
 - Setup Org-mode
 - Fix global site-packages for elpy
@@ -13,7 +14,8 @@ My emacs config is written in org-babel, using literate programming a for better
 - Company
 - Deft
 ** Setup package manager for emacs modes.
-After looking at the options I'm using Marmalade.  I don't want to be using bleeding edge which it seems MELPA uses since it links directly the git repos.
+After looking at the options I'm using Marmalade.  I don't want to be using
+bleeding edge which it seems MELPA uses since it links directly the git repos.
 #+BEGIN_src emacs-lisp :tangle yes
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
@@ -49,7 +51,7 @@ Hide things when emacs starts up, namely the tooltips, toolbar dn scrollbar.
   (menu-bar-mode 1)
   (scroll-bar-mode -1))
 #+end_src
-** Line numbers, gutters, line highlighting and default tabs, column markers
+** Little enhancements for coding
 Show line number in the left gutter and highlight current line
 Set default tabs to 4.  Highlight line.  There are a number of
 packages for highlighting the current line but hi-line is already
@@ -64,7 +66,7 @@ Mark the column at 80 for python.
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 #+end_src
-** Window location
+** Frame location
 I hate that emacs opens at the top left of my screen and a tiny
 frame.  SEt a default width, height and location
 #+BEGIN_src emacs-lisp :tangle yes
