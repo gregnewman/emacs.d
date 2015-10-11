@@ -12,7 +12,6 @@
 ** Packages I have installed
 - Solarized
 - Zenburn
-- Leuven
 - Org-mode
 - Virtualenvwrapper
 - Elpy
@@ -32,10 +31,10 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 #+end_src
-** Add the Leuven theme and consider the custom theme safe.
+** Set the theme and consider the custom theme safe.
 #+BEGIN_src emacs-lisp :tangle yes
 (package-initialize)
-(load-theme 'leuven t)
+(load-theme 'solarized-dark t)
 #+end_src
 ** Backups in the current directory are annoying.
    Let's move those to a central location.  I'm not worried about disk space here.
@@ -188,8 +187,8 @@
    everything (files open, variables defined, processes running) and your client
    can attach / disconnect as necessary. (yanked from Justin Abrahms, thanks)
 #+BEGIN_src emacs-lisp :tangle yes
-(if (not server-mode)
-    (server-start nil t))
+;(if (not server-mode)
+;    (server-start nil t))
 #+end_src
 ** iBuffer-mode
    I used this in the past minimally.  Need to work with it more extensively
