@@ -3,3 +3,5 @@ auto-save-list/
 backups/
 greg.el
 ido.*
+recentf
+saveplace
