@@ -65,33 +65,53 @@
 #+BEGIN_src emacs-lisp :tangle yes
 ; Set line numbers
 (global-linum-mode 1)
+
+; i hate tabs
+(setq-default indent-tabs-mode nil)
+
 ; default fill column
 (setq-default fill-column 80)
+
 ; column numbers
 (setq column-number-mode  t)
+
 ; highlight current line
 (global-hl-line-mode 1)
+
 ; default tab width
 (setq-default default-tab-width 4)
+
 ; show lines that are longer than 79 columns
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
+
 ; dont friggin beep at me!
 (setq ring-bell-function (lambda ()))
-; dont 
+
+; dont show startup screen
 ;(setq inhibit-startup-screen t
 ;      initial-major-mode 'fundamental-mode)
+
 ; confirm when killing emacs.
 (when (window-system)
   (setq confirm-kill-emacs 'yes-or-no-p))
+
+; only type y instead of yes
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ; require a new line at the end of files
 (setq require-final-newline t)
+
 ; Uniquify buffers, using angle brackets, so you get foo and foo<2>:
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
 ; auto-save buffer state
 (desktop-save-mode 1)
+
+; use Ubuntu mono
+(set-frame-font "Ubuntu Mono 12")
 #+end_src
 ** Frame location
    I hate that emacs opens at the top left of my screen and a tiny
