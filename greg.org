@@ -1,6 +1,11 @@
-#+title: Emacs Configuration
-My emacs config is written in org-babel, using literate programming a for better
-documented emacs config.
+#+TITLE: Emacs Configuration
+#+AUTHOR: Greg Newman
+#+EMAIL: greg@gregnewman.org
+
+* My emacs config is written in Org-mode
+   My old emacs config files were a pain in the ass to peruse. Org is a nicer
+   way to keep things organized.  I can keep a long config file in outline 
+   format this way with each section labeled.
 ** TODOs
 - Setup Org-mode
 - Fix global site-packages for elpy
@@ -14,8 +19,8 @@ documented emacs config.
 - Company
 - Deft
 ** Setup package manager for emacs modes.
-After looking at the options I'm using Marmalade.  I don't want to be using
-bleeding edge which it seems MELPA uses since it links directly the git repos.
+   After looking at the options I'm using Marmalade.  I don't want to be using
+   bleeding edge which it seems MELPA uses since it links directly the git repos.
 #+BEGIN_src emacs-lisp :tangle yes
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
@@ -33,7 +38,7 @@ bleeding edge which it seems MELPA uses since it links directly the git repos.
 (load-theme 'leuven t)
 #+end_src
 ** Backups in the current directory are annoying.
-Let's move those to a central location.  I'm not worried about disk space here.
+   Let's move those to a central location.  I'm not worried about disk space here.
 #+BEGIN_src emacs-lisp :tangle yes
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (setq delete-old-versions -1)
@@ -43,7 +48,7 @@ Let's move those to a central location.  I'm not worried about disk space here.
 #+end_src
 
 ** Windows Configuration
-Hide things when emacs starts up, namely the tooltips, toolbar dn scrollbar.
+   Hide things when emacs starts up, namely the tooltips, toolbar dn scrollbar.
 #+BEGIN_src emacs-lisp :tangle yes
 (when window-system
   (tooltip-mode -1)
@@ -52,11 +57,11 @@ Hide things when emacs starts up, namely the tooltips, toolbar dn scrollbar.
   (scroll-bar-mode -1))
 #+end_src
 ** Little enhancements for coding
-Show line number in the left gutter and highlight current line
-Set default tabs to 4.  Highlight line.  There are a number of
-packages for highlighting the current line but hi-line is already
-included and works fine.  No more cruft than needed.
-Mark the column at 80 for python.
+   Show line number in the left gutter and highlight current line
+   Set default tabs to 4.  Highlight line.  There are a number of
+   packages for highlighting the current line but hi-line is already
+   included and works fine.  No more cruft than needed.
+   Mark the column at 80 for python.
 #+BEGIN_src emacs-lisp :tangle yes
 (global-linum-mode 1)
 (setq column-number-mode  t)
@@ -67,8 +72,8 @@ Mark the column at 80 for python.
 (global-whitespace-mode t)
 #+end_src
 ** Frame location
-I hate that emacs opens at the top left of my screen and a tiny
-frame.  SEt a default width, height and location
+   I hate that emacs opens at the top left of my screen and a tiny
+   frame.  SEt a default width, height and location
 #+BEGIN_src emacs-lisp :tangle yes
 (setq initial-frame-alist '((top . 50)
                             (left . 200)
@@ -76,13 +81,13 @@ frame.  SEt a default width, height and location
                             (height . 40)))
 #+end_src
 ** Python / Elpy
-Starting with just Elpy.  As I feel I need to replicate the setup
-I had with WingIDE I'll modify this.  I tried to setup Anaconda but there's
-inherent problems with my El Capitan homebrew setup of python and pip that
-prevents it from running in the Emacs GUI.  It works fine in terminal.  Trying
-out Elpy to see if that has issues.  I love the fact that Elpy is on 
-readthedocs.org!!
-- Documentation: http://elpy.readthedocs.org/en/latest/ide.html
+   Starting with just Elpy.  As I feel I need to replicate the setup
+   I had with WingIDE I'll modify this.  I tried to setup Anaconda but there's
+   inherent problems with my El Capitan homebrew setup of python and pip that
+   prevents it from running in the Emacs GUI.  It works fine in terminal.  Trying
+   out Elpy to see if that has issues.  I love the fact that Elpy is on 
+   readthedocs.org!!
+   - Documentation: http://elpy.readthedocs.org/en/latest/ide.html
 #+BEGIN_src emacs-lisp :tangle yes
 (package-initialize)
 (elpy-enable)
@@ -92,7 +97,7 @@ readthedocs.org!!
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 #+end_src
 ** IDO
-Because it saves time
+   Because it saves time
 #+BEGIN_src emacs-lisp :tangle yes
 ;; IDO rules
 (require 'ido)
@@ -100,9 +105,9 @@ Because it saves time
 (setq ido-enable-flex-matching t)
 #+end_src
 ** Deft
-I use nValt constantly for taking notes and use Notesy on the iPhone for reading
-or doing small edits.  I'm going to try using Deft to connect to those notes and 
-write them in org format.
+   I use nValt constantly for taking notes and use Notesy on the iPhone for reading
+   or doing small edits.  I'm going to try using Deft to connect to those notes and 
+   write them in org format.
 #+BEGIN_src emacs-lisp :tangle yes
 (require 'deft)
 (setq deft-extensions '("org" "txt" "tex"))
@@ -110,4 +115,26 @@ write them in org format.
 (setq deft-text-mode 'org-mode)
 (setq deft-use-filename-as-title t)
 (global-set-key [f1] 'deft)
+#+end_src
+** Reverting buffers
+   Very useful if dealing with git repos and also files that can change from nValt
+#+BEGIN_src emacs-lisp :tangle yes
+(global-auto-revert-mode t)
+#+end_src
+** Saveplace
+   Remember my place in files across sessions
+#+BEGIN_src emacs-lisp :tangle yes
+;; saveplace remembers your location in a file when saving files
+(setq save-place-file (concat user-emacs-directory "saveplace"))
+;; activate it for all buffers
+(setq-default save-place t)
+(require 'saveplace)
+#+end_src
+** Remember recent files
+#+BEGIN_src emacs-lisp :tangle yes
+;; save recent files
+(setq recentf-save-file (concat user-emacs-directory "recentf")
+      recentf-max-saved-items 200
+      recentf-max-menu-items 15)
+(recentf-mode t)
 #+end_src
