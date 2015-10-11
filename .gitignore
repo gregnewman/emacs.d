@@ -6,3 +6,5 @@ ido.*
 recentf
 saveplace
 .#*
+.emacs.desktop.lock
+.emacs.desktop
