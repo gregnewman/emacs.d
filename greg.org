@@ -1,19 +1,19 @@
-#+title: Greg Newman's Emacs Configuration
-* My emacs config is written in org-babel, using literate programming
-a for better documented emacs config.
+#+title: Emacs Configuration
+My emacs config is written in org-babel, using literate programming a for better documented emacs config.
 ** TODOs
-- Add Anaconda for Python development
 - Setup Org-mode
+- Fix global site-packages for elpy
 ** Packages I have installed
 - Solarized
 - Zenburn
+- Leuven
 - Org-mode
 - Virtualenvwrapper
 - Elpy
 - Company
-** Setup package manager for emacs modes.  After looking at the options
-I'm using Marmalade.  I don't want to be using bleeding edge which it
-seems MELPA uses since it links directly the git repos.
+- Deft
+** Setup package manager for emacs modes.
+After looking at the options I'm using Marmalade.  I don't want to be using bleeding edge which it seems MELPA uses since it links directly the git repos.
 #+BEGIN_src emacs-lisp :tangle yes
 (require 'package)
 ;; Add the original Emacs Lisp Package Archive
@@ -25,13 +25,13 @@ seems MELPA uses since it links directly the git repos.
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 #+end_src
-** Add the Leuven theme and consider the custom themes safe.
+** Add the Leuven theme and consider the custom theme safe.
 #+BEGIN_src emacs-lisp :tangle yes
 (package-initialize)
 (load-theme 'leuven t)
 #+end_src
-** Backups in the current directory are annoying.  Let's move those to
-a central location.  I'm not worried about disk space here.
+** Backups in the current directory are annoying.
+Let's move those to a central location.  I'm not worried about disk space here.
 #+BEGIN_src emacs-lisp :tangle yes
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (setq delete-old-versions -1)
@@ -64,7 +64,8 @@ Mark the column at 80 for python.
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 #+end_src
-** I hate that emacs opens at the top left of my screen and a tiny
+** Window location
+I hate that emacs opens at the top left of my screen and a tiny
 frame.  SEt a default width, height and location
 #+BEGIN_src emacs-lisp :tangle yes
 (setq initial-frame-alist '((top . 50)
