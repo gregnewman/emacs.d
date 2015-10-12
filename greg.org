@@ -17,6 +17,8 @@
 - Elpy
 - Company
 - Deft
+- PHP-mode
+- Paredit
 ** Setup package manager for emacs modes.
    After looking at the options I'm using Marmalade.  I don't want to be using
    bleeding edge which it seems MELPA uses since it links directly the git repos.
@@ -34,7 +36,7 @@
 ** Set the theme and consider the custom theme safe.
 #+BEGIN_src emacs-lisp :tangle yes
 (package-initialize)
-(load-theme 'solarized-dark t)
+(load-theme 'zenburn t)
 #+end_src
 ** Backups in the current directory are annoying.
    Let's move those to a central location.  I'm not worried about disk space here.
@@ -203,6 +205,12 @@
 
   Turn on paredit and eldoc when possible. Very useful.
 #+BEGIN_SRC emacs-lisp tangle: yes
+(require 'paredit)
+(require 'eldoc)
+    (eldoc-add-command
+     'paredit-backward-delete
+     'paredit-close-round)
+
 (defun my/turn-on-paredit-and-eldoc ()
   (interactive)
   (paredit-mode 1)
