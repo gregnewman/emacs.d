@@ -8,3 +8,4 @@ saveplace
 .#*
 .emacs.desktop.lock
 .emacs.desktop
+eshell/
