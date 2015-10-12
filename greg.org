@@ -144,6 +144,12 @@
    - Documentation: http://elpy.readthedocs.org/en/latest/ide.html
 
    #+BEGIN_SRC emacs-lisp :tangle yes
+   ; Set PYTHONPATH
+   (setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages/")
+
+   ; I'm using homebrew python so add homebrew path to exec-path
+   (add-to-list 'exec-path "/usr/local/bin/")
+
    (package-initialize)
    (elpy-enable)
 
