@@ -16,7 +16,7 @@
    - Virtualenvwrapper
    - Elpy
    - Company
-   - Deft
+   - Deft -  [[http://jblevins.org/projects/deft/]]
    - PHP-mode
    - Paredit
 ** Setup package manager for emacs modes.
