@@ -19,6 +19,7 @@
    - Deft -  [[http://jblevins.org/projects/deft/]]
    - PHP-mode
    - Paredit
+   - Ace jump mode - https://github.com/winterTTr/ace-jump-mode
 ** Setup package manager for emacs modes.
    After looking at the options I'm using Marmalade.  I don't want to be using
    bleeding edge which it seems MELPA uses since it links directly the git repos.
@@ -217,6 +218,15 @@
     (global-set-key (kbd "C-x C-i") 'ido-goto-symbol)
 
     #+end_src
+
+** Ace Jump Mode
+   #+BEGIN_SRC emacs-lisp :tangle yes
+
+   (require 'ace-jump-mode)
+   (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+   #+end_src
+
 ** Deft
    I use nValt constantly for taking notes and use Notesy on the iPhone for reading
    or doing small edits.  I'm going to try using Deft to connect to those notes and 
