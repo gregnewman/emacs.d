@@ -10,16 +10,16 @@
 - Setup Org-mode
 - Fix global site-packages for elpy
 ** Packages I have installed
-   - Solarized
-   - Zenburn
-   - Org-mode
-   - Virtualenvwrapper
-   - Elpy
+   - Ace jump mode - https://github.com/winterTTr/ace-jump-mode
    - Company
    - Deft -  [[http://jblevins.org/projects/deft/]]
-   - PHP-mode
+   - Elpy
+   - Org-mode
    - Paredit
-   - Ace jump mode - https://github.com/winterTTr/ace-jump-mode
+   - PHP-mode
+   - Solarized
+   - Virtualenvwrapper
+   - Zenburn
 ** Setup package manager for emacs modes.
    After looking at the options I'm using Marmalade.  I don't want to be using
    bleeding edge which it seems MELPA uses since it links directly the git repos.
