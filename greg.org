@@ -2,13 +2,14 @@
 #+AUTHOR: Greg Newman
 #+EMAIL: greg@gregnewman.org
 
-* My emacs config is written in Org-mode
+* Emacs configuration
    My old emacs config files were a pain in the ass to peruse. Org is a nicer
    way to keep things organized.  I can keep a long config file in outline 
-   format this way with each section labeled.
+   form for readability.
 ** TODOs
 - Setup Org-mode
-- Fix global site-packages for elpy
+- Fix key binding issue with Ace jump mode and org mode
+
 ** Packages I have installed
    - Ace jump mode - https://github.com/winterTTr/ace-jump-mode
    - Company
