@@ -5,17 +5,18 @@
 * Emacs configuration
    My old emacs config files were a pain in the ass to peruse. Org is a nicer
    way to keep things organized.  I can keep a long config file in outline 
-   form for readability.
+   form for readability. This emacs config file is hosted on Github [fn:1]
+
 ** TODOs
 - Setup Org-mode
 - Fix key binding issue with Ace jump mode and org mode
 
 ** Packages I have installed
-   - Ace jump mode - https://github.com/winterTTr/ace-jump-mode
+   - Ace jump mode [fn:2]
    - Company
-   - Deft - [[http://jblevins.org/projects/deft/]]
+   - Deft [fn:3]
    - Elpy
-   - Markdown - http://jblevins.org/projects/markdown-mode/
+   - Markdown [fn:4]
    - Org-mode
    - Paredit
    - PHP-mode
@@ -346,3 +347,13 @@
    (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
    #+end_src
+
+* Footnotes
+
+[fn:1] https://github.com/gregnewman/emacs-config
+
+[fn:2] https://github.com/winterTTr/ace-jump-mode
+
+[fn:3] [[http://jblevins.org/projects/deft/]]
+
+[fn:4] http://jblevins.org/projects/markdown-mode/
