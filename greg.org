@@ -15,6 +15,7 @@
    - Company
    - Deft -  [[http://jblevins.org/projects/deft/]]
    - Elpy
+   - Markdown
    - Org-mode
    - Paredit
    - PHP-mode
@@ -332,4 +333,13 @@
    #+BEGIN_SRC emacs-lisp :tangle yes
    ;;OPEN ALL TXT FILES IN ORGMODE
    (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
+   #+end_src
+
+** Markdown
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+   (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+   (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
    #+end_src
