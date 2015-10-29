@@ -221,6 +221,7 @@
     #+end_src
 
 ** Ace Jump Mode
+
    #+BEGIN_SRC emacs-lisp :tangle yes
 
    (require 'ace-jump-mode)
@@ -324,4 +325,11 @@
 
    (add-hook 'emacs-lisp-mode-hook #'my/turn-on-paredit-and-eldoc)
    (add-hook 'ielm-mode-hook #'my/turn-on-paredit-and-eldoc)
+   #+end_src
+
+** Org-mode
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   ;;OPEN ALL TXT FILES IN ORGMODE
+   (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
    #+end_src
