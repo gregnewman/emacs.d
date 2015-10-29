@@ -22,6 +22,7 @@
    - Solarized
    - Virtualenvwrapper
    - Zenburn
+
 ** Setup package manager for emacs modes.
    After looking at the options I'm using Marmalade.  I don't want to be using
    bleeding edge which it seems MELPA uses since it links directly the git repos.
@@ -121,6 +122,8 @@
 
    ; auto-save buffer state
    (desktop-save-mode 1)
+   (setq desktop-load-locked-desktop t)
+
 
    ; use Ubuntu mono
    (set-frame-font "Ubuntu Mono 12")
