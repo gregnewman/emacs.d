@@ -13,9 +13,9 @@
 ** Packages I have installed
    - Ace jump mode - https://github.com/winterTTr/ace-jump-mode
    - Company
-   - Deft -  [[http://jblevins.org/projects/deft/]]
+   - Deft - [[http://jblevins.org/projects/deft/]]
    - Elpy
-   - Markdown
+   - Markdown - http://jblevins.org/projects/markdown-mode/
    - Org-mode
    - Paredit
    - PHP-mode
