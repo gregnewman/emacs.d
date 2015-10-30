@@ -344,7 +344,7 @@
    (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
    #+end_src
 
-   Org-mode is ugley with all the leading stars.  I'm going to turn those off
+   Org-mode is ugly with all the leading stars.  I'm going to turn those off
    and use org-bullets for a much cleaner presentation.
    #+BEGIN_SRC emacs-lisp :tangle yes
    ;; hide leading stars
