@@ -17,6 +17,7 @@
    - Deft [fn:3]
    - Elpy
    - Markdown [fn:4]
+   - Org-bullets [fn:5]
    - Org-mode
    - Paredit
    - PHP-mode
@@ -333,10 +334,26 @@
    #+end_src
 
 ** Org-mode
+   This will be a expanding collection of org customization.  I live in text
+   files throughout my days and orgmode gives me a nice interface for collecting
+   notes.  I also work on these notes in nvAlt from multiple macs so I have
+   set txt files to open as org.
 
    #+BEGIN_SRC emacs-lisp :tangle yes
    ;;OPEN ALL TXT FILES IN ORGMODE
    (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
+   #+end_src
+
+   Org-mode is ugley with all the leading stars.  I'm going to turn those off
+   and use org-bullets for a much cleaner presentation.
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   ;; hide leading stars
+   (setq org-hide-leading-stars t)
+
+   ;; use org-bullets for a cleaner view
+   (require 'org-bullets)
+   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
    #+end_src
 
 ** Markdown
@@ -357,3 +374,5 @@
 [fn:3] [[http://jblevins.org/projects/deft/]]
 
 [fn:4] http://jblevins.org/projects/markdown-mode/
+
+[fn:5] https://github.com/sabof/org-bullets
