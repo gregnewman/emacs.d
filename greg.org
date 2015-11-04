@@ -21,6 +21,7 @@
    - Org-mode
    - Paredit
    - PHP-mode
+   - Pyenv-mode [fn:6]
    - Solarized
    - Virtualenvwrapper
    - Zenburn
@@ -129,6 +130,9 @@
 
    ; use Ubuntu mono
    (set-frame-font "Ubuntu Mono 12")
+
+   ; increase the line spacing
+   (setq-default line-spacing 5)
    #+end_src
 
 ** Frame location
@@ -151,15 +155,34 @@
    readthedocs.org!!
    - Documentation: http://elpy.readthedocs.org/en/latest/ide.html
 
+   I'm using pyenv and pyenv-virtualenv for managing python version
    #+BEGIN_SRC emacs-lisp :tangle yes
-   ; Set PYTHONPATH
-   (setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages/")
+   (pyenv-mode)
+   #+end_src
 
-   ; I'm using homebrew python so add homebrew path to exec-path
-   (add-to-list 'exec-path "/usr/local/bin/")
+   When opening a python file, look for a .python-version file and activate
+   the virtualenv.
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (defun ssbb-pyenv-hook ()
+   "Automatically activates pyenv version if .python-version file exists."
+   (f-traverse-upwards
+   (lambda (path)
+     (let ((pyenv-version-path (f-expand ".python-version" path)))
+       (if (f-exists? pyenv-version-path)
+           (pyenv-mode-set (s-trim (f-read-text pyenv-version-path 'utf-8))))))))
+
+   (add-hook 'find-file-hook 'ssbb-pyenv-hook)
+   #+end_src
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   ; I'm using pyenv python so add shims path to exec-path
+   (add-to-list 'exec-path "~/.pyenv/shims")
 
    (package-initialize)
    (elpy-enable)
+
+   ; Debugging flymake
+   ; (setq flymake-log-level 3)
    #+end_src
 
 ** IDO & iMenu
@@ -376,3 +399,5 @@
 [fn:4] http://jblevins.org/projects/markdown-mode/
 
 [fn:5] https://github.com/sabof/org-bullets
+
+[fn:6] https://github.com/proofit404/pyenv-mode
