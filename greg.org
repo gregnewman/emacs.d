@@ -161,7 +161,7 @@
    #+end_src
 
    When opening a python file, look for a .python-version file and activate
-   the virtualenv.
+   the virtualenv. [fn:7]
    #+BEGIN_SRC emacs-lisp :tangle yes
    (defun ssbb-pyenv-hook ()
    "Automatically activates pyenv version if .python-version file exists."
@@ -401,3 +401,5 @@
 [fn:5] https://github.com/sabof/org-bullets
 
 [fn:6] https://github.com/proofit404/pyenv-mode
+
+[fn:7] http://ssbb.me/emacs-pyenv-auto-activation-en.html
