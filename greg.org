@@ -362,6 +362,16 @@
    notes.  I also work on these notes in nvAlt from multiple macs so I have
    set txt files to open as org.
 
+   Using org from the git repo to stay up to date with fixes
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   ;; activate debugging
+   (setq debug-on-error t
+         debug-on-signal nil
+         debug-on-quit nil)
+
+   (add-to-list 'load-path "~/dev/personal/org-mode/contrib/lisp" t)
+   #+end_src
+
    #+BEGIN_SRC emacs-lisp :tangle yes
    ;;OPEN ALL TXT FILES IN ORGMODE
    (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
