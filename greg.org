@@ -4,7 +4,7 @@
 
 * Emacs configuration
    My old emacs config files were a pain in the ass to peruse. Org is a nicer
-   way to keep things organized.  I can keep a long config file in outline 
+   way to keep things organized.  I can keep a long config file in outline
    form for readability. This emacs config file is hosted on Github [fn:1]
 
 ** TODOs
@@ -151,7 +151,7 @@
    I had with WingIDE I'll modify this.  I tried to setup Anaconda but there's
    inherent problems with my El Capitan homebrew setup of python and pip that
    prevents it from running in the Emacs GUI.  It works fine in terminal.  Trying
-   out Elpy to see if that has issues.  I love the fact that Elpy is on 
+   out Elpy to see if that has issues.  I love the fact that Elpy is on
    readthedocs.org!!
    - Documentation: http://elpy.readthedocs.org/en/latest/ide.html
 
@@ -183,6 +183,15 @@
 
    ; Debugging flymake
    ; (setq flymake-log-level 3)
+
+   ; Use Jedi instead of buggy Rope
+   (setq elpy-rpc-backend "jedi")
+   (setq python-check-command (expand-file-name "/Users/greg/.pyenv/shims/flake8"))
+   ; (setq python-check-command "flake8")
+
+   ; cleanup whitespace on save.  This is run as a before-save-hook
+   ; because it would throw flake8 errors on after-save-hook
+   (add-hook 'before-save-hook 'whitespace-cleanup)
    #+end_src
 
 ** IDO & iMenu
@@ -260,7 +269,7 @@
 
 ** Deft
    I use nValt constantly for taking notes and use Notesy on the iPhone for reading
-   or doing small edits.  I'm going to try using Deft to connect to those notes and 
+   or doing small edits.  I'm going to try using Deft to connect to those notes and
    write them in org format.
 
    #+BEGIN_SRC emacs-lisp :tangle yes
