@@ -414,6 +414,14 @@
    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
    #+end_src
 
+** Flyspell
+  #+BEGIN_SRC emacs-lisp :tangle yes
+   (add-hook 'python-mode-hook
+          (lambda ()
+            (flyspell-prog-mode)
+          ))
+   (add-hook 'org-mode-hook 'turn-on-flyspell)
+   #+end_src
 * Footnotes
 
 [fn:1] https://github.com/gregnewman/emacs-config
