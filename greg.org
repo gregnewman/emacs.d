@@ -415,7 +415,8 @@
    #+end_src
 
 ** Flyspell
-  #+BEGIN_SRC emacs-lisp :tangle yes
+   Only check spelling (for now) in python doc strings and org files
+   #+BEGIN_SRC emacs-lisp :tangle yes
    (add-hook 'python-mode-hook
           (lambda ()
             (flyspell-prog-mode)
