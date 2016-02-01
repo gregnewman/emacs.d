@@ -25,6 +25,7 @@
    - Solarized
    - Virtualenvwrapper
    - Zenburn
+   - Exec-path-from-shell [fn:8]
 
 ** Setup package manager for emacs modes.
    After looking at the options I'm using Marmalade.  I don't want to be using
@@ -155,6 +156,12 @@
    readthedocs.org!!
    - Documentation: http://elpy.readthedocs.org/en/latest/ide.html
 
+   When starting emacs gui, the paths are not read from .zshrc
+   Using `exec-path-from-shell` fixes this.
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (exec-path-from-shell-initialize)
+   #+end_src
+
    I'm using pyenv and pyenv-virtualenv for managing python version
    #+BEGIN_SRC emacs-lisp :tangle yes
    (pyenv-mode)
@@ -176,7 +183,7 @@
 
    #+BEGIN_SRC emacs-lisp :tangle yes
    ; I'm using pyenv python so add shims path to exec-path
-   (add-to-list 'exec-path "~/.pyenv/shims")
+   ; (add-to-list 'exec-path "~/.pyenv/shims")
 
    (package-initialize)
    (elpy-enable)
@@ -186,7 +193,7 @@
 
    ; Use Jedi instead of buggy Rope
    (setq elpy-rpc-backend "jedi")
-   (setq python-check-command (expand-file-name "/Users/greg/.pyenv/shims/flake8"))
+   ; (setq python-check-command (expand-file-name "/Users/greg/.pyenv/shims/flake8"))
    ; (setq python-check-command "flake8")
 
    ; cleanup whitespace on save.  This is run as a before-save-hook
@@ -422,3 +429,5 @@
 [fn:6] https://github.com/proofit404/pyenv-mode
 
 [fn:7] http://ssbb.me/emacs-pyenv-auto-activation-en.html
+
+[fn:8] https://github.com/purcell/exec-path-from-shell
