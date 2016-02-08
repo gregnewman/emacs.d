@@ -201,6 +201,14 @@
    (add-hook 'before-save-hook 'whitespace-cleanup)
    #+end_src
 
+** HTML and JS
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (add-hook 'html-mode-hook
+        (lambda ()
+          ;; Default indentation is usually 2 spaces, changing to 4.
+          (set (make-local-variable 'sgml-basic-offset) 4)))
+   #+end_src
+
 ** IDO & iMenu
    Because it saves time
 
