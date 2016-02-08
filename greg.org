@@ -346,6 +346,10 @@
 
    (setq ibuffer-saved-filter-groups
      (quote (("default"
+            ("TRMS" (filename . "/code/learning-innovation-platform/"))
+            ("Pinax Submissions" (filename . "/.pyenv/versions/lip/src/pinax-submissions/pinax/submissions/"))
+            ("Duex" (filename . "/code/duex"))
+            ("Eldarion-Courses" (filename . "/code/eldarion-courses/"))
             ("Python"
                 (mode . python-mode))
             ("HTML"
@@ -452,11 +456,6 @@
    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
    #+end_src
 
-** Flyspell
-   Only check spelling (for now) in org files
-   #+BEGIN_SRC emacs-lisp :tangle yes
-   (add-hook 'org-mode-hook 'turn-on-flyspell)
-   #+end_src
 * Footnotes
 
 [fn:1] https://github.com/gregnewman/emacs-config
