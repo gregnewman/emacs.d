@@ -13,19 +13,18 @@
 
 ** Packages I have installed
    - Ace jump mode [fn:2]
+   - Ample Theme
    - Company
    - Deft [fn:3]
    - Elpy
+   - Exec-path-from-shell [fn:8]
    - Markdown [fn:4]
    - Org-bullets [fn:5]
    - Org-mode
    - Paredit
    - PHP-mode
    - Pyenv-mode [fn:6]
-   - Solarized
    - Virtualenvwrapper
-   - Zenburn
-   - Exec-path-from-shell [fn:8]
 
 ** Setup package manager for emacs modes.
    After looking at the options I'm using Marmalade.  I don't want to be using
@@ -47,7 +46,7 @@
 
    #+BEGIN_SRC emacs-lisp :tangle yes
    (package-initialize)
-   (load-theme 'solarized-dark t)
+   (load-theme 'ample t t)
    #+end_src
 
 ** Backups in the current directory are annoying.
