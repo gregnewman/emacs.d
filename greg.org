@@ -338,13 +338,17 @@
 
    (setq ibuffer-saved-filter-groups
      (quote (("default"
+            ("Python"
+                (mode . python-mode))
+            ("HTML"
+                (mode . html-mode))
+            ("JS"
+                (mode . js-mode))
             ("Org" ;; all org-related buffers
                  (mode . org-mode))
-            ("Programming" ;; prog stuff
-              (or
-                (mode . python-mode)
+            ("Lisp"
                 (mode . emacs-lisp-mode)
-                ))))))
+                )))))
 
    (add-hook 'ibuffer-mode-hook
      (lambda ()
@@ -402,8 +406,25 @@
    ;; use org-bullets for a cleaner view
    (require 'org-bullets)
    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
    #+end_src
+
+   Org-capture
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (setq org-directory "~/Dropbox/notesy")
+   (setq org-default-notes-file "~/Dropbox/notesy/refile.org")
+
+   ;; I use C-c c to start capture mode
+   (global-set-key (kbd "C-c c") 'org-capture)
+
+   ;; Capture templates
+   (setq org-capture-templates
+       (quote (("n" "note" entry (file "~/Dropbox/notesy/refile.org")
+                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+               ("m" "Meeting" entry (file "~/Dropbox/notesy/refile.org")
+                "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
+               ("p" "Phone call" entry (file "~/Dropbox/notesy/refile.org")
+                "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t))))
+    #+end_src
 
 ** Markdown
 
