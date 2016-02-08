@@ -46,7 +46,7 @@
 
    #+BEGIN_SRC emacs-lisp :tangle yes
    (package-initialize)
-   (load-theme 'ample t t)
+   (load-theme 'ample-flat t t)
    #+end_src
 
 ** Backups in the current directory are annoying.
