@@ -353,6 +353,11 @@
    (add-hook 'ibuffer-mode-hook
      (lambda ()
        (ibuffer-switch-to-saved-filter-groups "default")))
+
+   ;; Add full path to buffer title
+   (setq frame-title-format
+      (list (format "%s %%S: %%j " (system-name))
+        '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
    #+end_src
 
 ** elisp
