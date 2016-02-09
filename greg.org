@@ -14,9 +14,11 @@
    - Ace jump mode [fn:2]
    - Ample Theme
    - Company
+   - Dedicated
    - Deft [fn:3]
    - Elpy
    - Exec-path-from-shell [fn:8]
+   - Fill-column-indicator
    - Markdown [fn:4]
    - Org-bullets [fn:5]
    - Org-mode
@@ -60,6 +62,10 @@
    (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
    #+end_src
 
+** Dedicated
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (require 'dedicated)
+   #+end_src
 ** Windows Configuration
    Hide things when emacs starts up, namely the tooltips, toolbar dn scrollbar.
 
@@ -87,6 +93,10 @@
 
    ; default fill column
    (setq-default fill-column 80)
+   (require 'fill-column-indicator)
+   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+   (global-fci-mode 1)
+   (setq fci-rule-color "black")
 
    ; column numbers
    (setq column-number-mode  t)
