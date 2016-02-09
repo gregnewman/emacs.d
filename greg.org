@@ -8,8 +8,7 @@
    form for readability. This emacs config file is hosted on Github [fn:1]
 
 ** TODOs
-- Setup Org-mode
-- Fix key binding issue with Ace jump mode and org mode
+   - nothing right now
 
 ** Packages I have installed
    - Ace jump mode [fn:2]
@@ -46,7 +45,8 @@
 
    #+BEGIN_SRC emacs-lisp :tangle yes
    (package-initialize)
-   (load-theme 'ample-flat t t)
+   (load-theme 'ample t t)
+   (enable-theme 'ample)
    #+end_src
 
 ** Backups in the current directory are annoying.
@@ -126,7 +126,6 @@
    ; auto-save buffer state
    (desktop-save-mode 1)
    (setq desktop-load-locked-desktop t)
-
 
    ; use Ubuntu mono
    (set-frame-font "Ubuntu Mono 12")
