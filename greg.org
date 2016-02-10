@@ -26,6 +26,7 @@
    - PHP-mode
    - Pyenv-mode [fn:6]
    - Virtualenvwrapper
+   - Web-mode
 
 ** Setup package manager for emacs modes.
    After looking at the options I'm using Marmalade.  I don't want to be using
@@ -211,10 +212,20 @@
 
 ** HTML and JS
    #+BEGIN_SRC emacs-lisp :tangle yes
-   (add-hook 'html-mode-hook
-        (lambda ()
-          ;; Default indentation is usually 2 spaces, changing to 4.
-          (set (make-local-variable 'sgml-basic-offset) 4)))
+   (require 'web-mode)
+   (add-to-list 'auto-mode-alist '("\\.hb\\.html\\'" . web-mode))
+   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+   (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+   (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+   (add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
+
+   ;; everything is indented 2 spaces
+   (setq web-mode-markup-indent-offset 2)
+   (setq web-mode-css-indent-offset 2)
+   (setq web-mode-code-indent-offset 2)
    #+end_src
 
 ** IDO & iMenu
@@ -361,7 +372,7 @@
             ("Python"
                 (mode . python-mode))
             ("HTML"
-                (mode . html-mode))
+                (mode . web-mode))
             ("JS"
                 (mode . js-mode))
             ("Org" ;; all org-related buffers
