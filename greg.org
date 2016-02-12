@@ -143,6 +143,9 @@
 
    ; increase the line spacing
    (setq-default line-spacing 5)
+
+   ; don't show fringe
+   (setq overflow-newline-into-fringe nil)
    #+end_src
 
 ** Frame location
