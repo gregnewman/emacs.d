@@ -42,6 +42,7 @@
                 '("marmalade" . "http://marmalade-repo.org/packages/"))
    (add-to-list 'package-archives
             '("melpa" . "http://melpa.milkbox.net/packages/"))
+
    #+end_src
 
 ** Set the theme and consider the custom theme safe.
@@ -86,6 +87,9 @@
    Mark the column at 80 for python.
 
    #+BEGIN_SRC emacs-lisp :tangle yes
+   ; Set user full name
+   (setq user-full-name "Greg Newman")
+
    ; Set line numbers
    (global-linum-mode 1)
 
