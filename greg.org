@@ -16,9 +16,11 @@
    - Company
    - Dedicated
    - Deft [fn:3]
+   - Dpaste.el
    - Elpy
    - Exec-path-from-shell [fn:8]
    - Fill-column-indicator
+   - Gist
    - Markdown [fn:4]
    - Org-bullets [fn:5]
    - Org-mode
@@ -90,6 +92,9 @@
    #+BEGIN_SRC emacs-lisp :tangle yes
    ; Set user full name
    (setq user-full-name "Greg Newman")
+
+   ; dpaste.el custom key
+   (global-set-key (kbd "C-c p") 'dpaste-region-or-buffer)
 
    ; Set line numbers
    (global-linum-mode 1)
