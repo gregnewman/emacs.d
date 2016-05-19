@@ -25,6 +25,7 @@
    - Org-bullets [fn:5]
    - Org-mode
    - Paredit
+   - Projectile
    - PHP-mode
    - Pyenv-mode [fn:6]
    - Smex
@@ -98,9 +99,7 @@
 
    ; Set line numbers
    (global-linum-mode 1)
-   (add-hook 'window-configuration-change-hook
-       (lambda ()
-         (set-window-margins (car (get-buffer-window-list (current-buffer) nil t)) 2 2)))
+   (setq linum-format "%d ")
 
    ; i hate tabs
    (setq-default indent-tabs-mode nil)
@@ -158,13 +157,17 @@
    (setq-default line-spacing 5)
 
    ; don't show fringe
-   (setq overflow-newline-into-fringe nil)
+   ;; (setq overflow-newline-into-fringe nil)
+   (fringe-mode 4)
 
    ; SMEX
    (global-set-key (kbd "M-x") 'smex)
    (global-set-key (kbd "M-X") 'smex-major-mode-commands)
    ;; This is your old M-x.
    (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+   ; Projectile
+   (projectile-global-mode)
    #+end_src
 
 ** Frame location
