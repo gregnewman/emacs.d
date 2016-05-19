@@ -98,6 +98,9 @@
 
    ; Set line numbers
    (global-linum-mode 1)
+   (add-hook 'window-configuration-change-hook
+       (lambda ()
+         (set-window-margins (car (get-buffer-window-list (current-buffer) nil t)) 2 2)))
 
    ; i hate tabs
    (setq-default indent-tabs-mode nil)
@@ -487,6 +490,7 @@
 
 ** Markdown
 
+
    #+BEGIN_SRC emacs-lisp :tangle yes
    (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
@@ -494,6 +498,23 @@
    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
    #+end_src
 
+** Terminal
+   Fixes for using emacs in iterm2
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   ;; Enable mouse support
+   (unless window-system
+     (require 'mouse)
+     (xterm-mouse-mode t)
+     (global-set-key [mouse-4] (lambda ()
+                              (interactive)
+                              (scroll-down 1)))
+     (global-set-key [mouse-5] (lambda ()
+                              (interactive)
+                              (scroll-up 1)))
+     (defun track-mouse (e))
+     (setq mouse-sel-mode t))
+   #+end_src
 * Footnotes
 
 [fn:1] https://github.com/gregnewman/emacs-config
