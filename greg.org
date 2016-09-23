@@ -105,11 +105,11 @@
    (setq-default indent-tabs-mode nil)
 
    ; default fill column
-   (setq-default fill-column 80)
-   (require 'fill-column-indicator)
-   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-   (global-fci-mode 1)
-   (setq fci-rule-color "black")
+   ; (setq-default fill-column 80)
+   ; (require 'fill-column-indicator)
+   ; (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+   ; (global-fci-mode 1)
+   ; (setq fci-rule-color "black")
 
    ; column numbers
    (setq column-number-mode  t)
@@ -217,7 +217,7 @@
 
    #+BEGIN_SRC emacs-lisp :tangle yes
    ; I'm using pyenv python so add shims path to exec-path
-   ; (add-to-list 'exec-path "~/.pyenv/shims")
+   (add-to-list 'exec-path "~/.pyenv/shims")
 
    (package-initialize)
    (elpy-enable)
@@ -227,8 +227,8 @@
 
    ; Use Jedi instead of buggy Rope
    (setq elpy-rpc-backend "jedi")
-   ; (setq python-check-command (expand-file-name "/Users/greg/.pyenv/shims/flake8"))
-   ; (setq python-check-command "flake8")
+   (setq python-check-command (expand-file-name "/Users/greg/.pyenv/shims/flake8"))
+   (setq python-check-command "flake8")
 
    ; cleanup whitespace on save.  This is run as a before-save-hook
    ; because it would throw flake8 errors on after-save-hook
