@@ -21,7 +21,10 @@
    - Exec-path-from-shell [fn:8]
    - Fill-column-indicator
    - Gist
+   - ibuffer-vc
+   - ido-vertical-mode
    - Markdown [fn:4]
+   - Magit
    - Org-bullets [fn:5]
    - Org-mode
    - Paredit
@@ -255,7 +258,7 @@
    (setq js-indent-level 2)
    #+end_src
 
-** IDO & iMenu
+** IDO, ibuffer & iMenu
    Because it saves time
 
    #+BEGIN_SRC emacs-lisp :tangle yes
@@ -316,6 +319,16 @@
               (add-to-list 'name-and-pos (cons name position))))))))
 
     (global-set-key (kbd "C-x C-i") 'ido-goto-symbol)
+
+    (add-hook 'ibuffer-hook
+     (lambda ()
+       (ibuffer-vc-set-filter-groups-by-vc-root)
+       (unless (eq ibuffer-sorting-mode 'alphabetic)
+         (ibuffer-do-sort-by-alphabetic))))
+
+    (require 'ido-vertical-mode)
+    (ido-mode 1)
+    (ido-vertical-mode 1)
 
     #+end_src
 
@@ -503,6 +516,10 @@
    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
    #+end_src
 
+** Magit
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (global-set-key (kbd "C-x g") 'magit-status)
+   #+end_src
 ** Terminal
    Fixes for using emacs in iterm2
 
