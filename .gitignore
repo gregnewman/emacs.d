@@ -10,3 +10,7 @@ saveplace
 .emacs.desktop
 eshell/
 bookmarks
+places
+projectile-bookmarks.eld
+smex-items
+init.el
