@@ -366,11 +366,10 @@
    Remember my place in files across sessions
 
    #+BEGIN_SRC emacs-lisp :tangle yes
-   ;; saveplace remembers your location in a file when saving files
-   (setq save-place-file (concat user-emacs-directory "saveplace"))
    ;; activate it for all buffers
-   (setq-default save-place t)
-   (require 'saveplace)
+   (if (fboundp #'save-place-mode)
+     (save-place-mode +1)
+     (setq-default save-place t))
    #+end_src
 
 ** Remember recent files
