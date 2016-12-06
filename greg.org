@@ -31,6 +31,7 @@
    - Projectile
    - PHP-mode
    - Pyenv-mode [fn:6]
+   - SCSS mode
    - Smex
    - Virtualenvwrapper
    - Web-mode
