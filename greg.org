@@ -536,18 +536,25 @@
      (defun track-mouse (e))
      (setq mouse-sel-mode t))
 
-   (defun copy-from-osx ()
-     (shell-command-to-string "pbpaste"))
+   (when (eq system-type 'darwin)
+     ;; terminal clipboard while inside tmux
+     (unless (display-graphic-p)
+       (when (and (> (length (getenv "TMUX")) 0) (executable-find "reattach-to-user-namespace"))
 
-   (defun paste-to-osx (text &optional push)
-     (let ((process-connection-type nil))
-   (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-     (process-send-string proc text)
-      (process-send-eof proc))))
+     (defun paste-from-osx ()
+       (shell-command-to-string "reattach-to-user-namespace pbpaste") )
 
-   (setq interprogram-cut-function 'paste-to-osx)
-   (setq interprogram-paste-function 'copy-from-osx)
+     (defun cut-to-osx (text &optional push)
+       (let ((process-connection-type nil))
+         (let ((proc (start-process "pbcopy" "*Messages*" "reattach-to-user-namespace" "pbcopy") ))
+           (process-send-string proc text)
+           (process-send-eof proc))))
 
+      (setq interprogram-cut-function 'cut-to-osx)
+      (setq interprogram-paste-function 'paste-from-osx)
+    )
+  )
+)
    #+end_src
 * Footnotes
 
