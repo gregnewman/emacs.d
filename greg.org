@@ -469,7 +469,7 @@
          debug-on-signal nil
          debug-on-quit nil)
 
-   (add-to-list 'load-path "~/dev/personal/org-mode/contrib/lisp" t)
+   (add-to-list 'load-path "~/code/org-mode/contrib/lisp" t)
    #+end_src
 
    #+BEGIN_SRC emacs-lisp :tangle yes
