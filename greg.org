@@ -506,6 +506,9 @@
                 "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
                ("p" "Phone call" entry (file "~/Dropbox/notesy/refile.org")
                 "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t))))
+
+   ;; enable line breaks
+   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
    #+end_src
 
 ** Markdown
