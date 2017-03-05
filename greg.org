@@ -154,7 +154,6 @@
 
    ; auto-save buffer state
    (desktop-save-mode 1)
-   (setq desktop-load-locked-desktop t)
 
    ; use Ubuntu mono
    (set-frame-font "Ubuntu Mono 12")
@@ -370,9 +369,8 @@
 
    #+BEGIN_SRC emacs-lisp :tangle yes
    ;; activate it for all buffers
-   (if (fboundp #'save-place-mode)
-     (save-place-mode +1)
-     (setq-default save-place t))
+   (save-place-mode +1)
+   (setq-default save-place t)
    #+end_src
 
 ** Remember recent files
