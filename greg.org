@@ -154,6 +154,11 @@
 
    ; auto-save buffer state
    (desktop-save-mode 1)
+   (setq desktop-dirname "~/.emacs.d/desktops/default/"
+      desktop-base-file-name "emacs.desktop"
+      desktop-base-lock-name "lock"
+      desktop-path (list desktop-dirname)
+      desktop-load-locked-desktop t)
 
    ; use Ubuntu mono
    (set-frame-font "Ubuntu Mono 12")
