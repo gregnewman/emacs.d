@@ -13,7 +13,9 @@
 ** Packages I have installed
    - Ace jump mode [fn:2]
    - Ample Theme
-   - Company
+   - Cider
+   - Clojure-mode
+   - Clojurescript-mode
    - Dedicated
    - Deft [fn:3]
    - Dpaste.el
@@ -23,15 +25,15 @@
    - Gist
    - ibuffer-vc
    - ido-vertical-mode
-   - Markdown [fn:4]
    - Magit
+   - Markdown [fn:4]
    - Org-bullets [fn:5]
    - Org-mode
    - Paredit
-   - Projectile
    - PHP-mode
-   - Pyenv-mode [fn:6]
-   - SCSS mode
+   - Projectile
+   - Pyenv-mode-auto [fn:6]
+   - Sass mode
    - Smex
    - Virtualenvwrapper
    - Web-mode
@@ -504,7 +506,7 @@
                 "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
                ("p" "Phone call" entry (file "~/Dropbox/notesy/refile.org")
                 "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t))))
-    #+end_src
+   #+end_src
 
 ** Markdown
 
