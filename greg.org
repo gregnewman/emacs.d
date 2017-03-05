@@ -407,10 +407,10 @@
 
    (setq ibuffer-saved-filter-groups
      (quote (("default"
-            ("TRMS" (filename . "/code/learning-innovation-platform/"))
-            ("Pinax Submissions" (filename . "/.pyenv/versions/lip/src/pinax-submissions/pinax/submissions/"))
+            ("MGH" (filename . "/code/mgh/"))
             ("Duex" (filename . "/code/duex"))
             ("Eldarion-Courses" (filename . "/code/eldarion-courses/"))
+            ("Revsys" (filename . "/code/revyss"))
             ("Python"
                 (mode . python-mode))
             ("HTML"
