@@ -23,6 +23,7 @@
    - Exec-path-from-shell [fn:8]
    - Fill-column-indicator
    - Gist
+   - Git-gutter
    - ibuffer-vc
    - ido-vertical-mode
    - Magit
@@ -178,6 +179,9 @@
 
    ; Projectile
    (projectile-global-mode)
+
+   ; Git Gutter
+   (global-git-gutter-mode +1)
    #+end_src
 
 ** Frame location
