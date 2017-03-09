@@ -26,6 +26,7 @@
    - Git-gutter
    - ibuffer-vc
    - ido-vertical-mode
+   - Less-css-mode
    - Magit
    - Markdown [fn:4]
    - Org-bullets [fn:5]
@@ -444,6 +445,11 @@
 
    #+end_src
 
+** Less
+  #+BEGIN_SRC emacs-lisp :tangle yes
+   (autoload 'less-css-mode "less-css-mode" "Major mode for Less")
+   (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
+   #+end_src
 ** elisp
    Configuration for elisp programming.
 
