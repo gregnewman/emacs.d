@@ -35,6 +35,7 @@
    - PHP-mode
    - Projectile
    - Pyenv-mode-auto [fn:6]
+   - Rainbow-mode
    - Sass mode
    - Smex
    - Virtualenvwrapper
@@ -449,6 +450,10 @@
   #+BEGIN_SRC emacs-lisp :tangle yes
    (autoload 'less-css-mode "less-css-mode" "Major mode for Less")
    (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
+
+   (require 'rainbow-mode)
+   (add-hook 'css-mode-hook (lambda () (rainbow-mode 1)))
+   (add-hook 'html-mode-hook (lambda () (rainbow-mode 1)))
    #+end_src
 ** elisp
    Configuration for elisp programming.
