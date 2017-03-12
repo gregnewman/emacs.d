@@ -90,6 +90,9 @@
      (tool-bar-mode -1)
      (menu-bar-mode 1)
      (scroll-bar-mode -1))
+
+   ;; Turn on winner mode for C-c <> window toggling.
+   (winner-mode 1)
    #+end_src
 
 ** Basics and general settings
@@ -448,12 +451,12 @@
 
 ** Less
   #+BEGIN_SRC emacs-lisp :tangle yes
-   (autoload 'less-css-mode "less-css-mode" "Major mode for Less")
-   (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
+    (autoload 'less-css-mode "less-css-mode" "Major mode for Less")
+    (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
-   (require 'rainbow-mode)
-   (add-hook 'css-mode-hook (lambda () (rainbow-mode 1)))
-   (add-hook 'html-mode-hook (lambda () (rainbow-mode 1)))
+    (require 'rainbow-mode)
+    (add-hook 'css-mode-hook (lambda () (rainbow-mode 1)))
+    (add-hook 'html-mode-hook (lambda () (rainbow-mode 1)))
    #+end_src
 ** elisp
    Configuration for elisp programming.
