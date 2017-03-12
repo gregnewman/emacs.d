@@ -158,13 +158,15 @@
    (require 'uniquify)
    (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
-   ; auto-save buffer state
+   ; Desktop setup.  I'm using multiple macs and using emacs --deamon
+   ; so i'm concatinating the desktop name with the system name so the other
+   ; macs have their own desktop file-name.
    (desktop-save-mode 1)
-   (setq desktop-dirname "~/.emacs.d/desktops/default/"
-      desktop-base-file-name "emacs.desktop"
-      desktop-base-lock-name "lock"
-      desktop-path (list desktop-dirname)
-      desktop-load-locked-desktop t)
+   (setq desktop-dirname "~/.emacs.d/desktops/")
+   (setq desktop-base-file-name (concat ".desktop." (system-name)))
+   (setq desktop-path (list desktop-dirname))
+   (setq desktop-base-lock-name "lock")
+   (setq desktop-load-locked-desktop t)
 
    ; use Ubuntu mono
    (set-frame-font "Ubuntu Mono 12")
@@ -482,8 +484,7 @@
 ** Org-mode
    This will be a expanding collection of org customization.  I live in text
    files throughout my days and orgmode gives me a nice interface for collecting
-   notes.  I also work on these notes in nvAlt from multiple macs so I have
-   set txt files to open as org.
+   notes.
 
    Using org from the git repo to stay up to date with fixes
    #+BEGIN_SRC emacs-lisp :tangle yes
@@ -495,6 +496,8 @@
    (add-to-list 'load-path "~/code/org-mode/contrib/lisp" t)
    #+end_src
 
+   I also work on these notes in nvAlt from multiple macs so I have set txt files
+   to open as org.
    #+BEGIN_SRC emacs-lisp :tangle yes
    ;;OPEN ALL TXT FILES IN ORGMODE
    (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
