@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Configuration</title>
+<!-- 2017-03-12 Sun 19:41 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Greg Newman" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Configuration</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Emacs configuration</a>
+<ul>
+<li><a href="#sec-1-1">1.1. TODOs</a></li>
+<li><a href="#sec-1-2">1.2. Packages I have installed</a></li>
+<li><a href="#sec-1-3">1.3. Setup package manager for emacs modes.</a></li>
+<li><a href="#sec-1-4">1.4. Set the theme and consider the custom theme safe.</a></li>
+<li><a href="#sec-1-5">1.5. Backups in the current directory are annoying.</a></li>
+<li><a href="#sec-1-6">1.6. Dedicated</a></li>
+<li><a href="#sec-1-7">1.7. Windows Configuration</a></li>
+<li><a href="#sec-1-8">1.8. Basics and general settings</a></li>
+<li><a href="#sec-1-9">1.9. Frame location</a></li>
+<li><a href="#sec-1-10">1.10. Python / Elpy</a></li>
+<li><a href="#sec-1-11">1.11. HTML and JS</a></li>
+<li><a href="#sec-1-12">1.12. IDO, ibuffer &amp; iMenu</a></li>
+<li><a href="#sec-1-13">1.13. Ace Jump Mode</a></li>
+<li><a href="#sec-1-14">1.14. Deft</a></li>
+<li><a href="#sec-1-15">1.15. Reverting buffers</a></li>
+<li><a href="#sec-1-16">1.16. Saveplace</a></li>
+<li><a href="#sec-1-17">1.17. Remember recent files</a></li>
+<li><a href="#sec-1-18">1.18. Server-mode</a></li>
+<li><a href="#sec-1-19">1.19. iBuffer-mode</a></li>
+<li><a href="#sec-1-20">1.20. Less</a></li>
+<li><a href="#sec-1-21">1.21. elisp</a></li>
+<li><a href="#sec-1-22">1.22. Org-mode</a></li>
+<li><a href="#sec-1-23">1.23. Markdown</a></li>
+<li><a href="#sec-1-24">1.24. Magit</a></li>
+<li><a href="#sec-1-25">1.25. Terminal</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Emacs configuration</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+My old emacs config files were a pain in the ass to peruse. Org is a nicer
+way to keep things organized.  I can keep a long config file in outline
+form for readability. This emacs config file is hosted on Github <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> TODOs</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>nothing right now
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Packages I have installed</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Ace jump mode <sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>
+</li>
+<li>Ample Theme
+</li>
+<li>Cider
+</li>
+<li>Clojure-mode
+</li>
+<li>Clojurescript-mode
+</li>
+<li>Dedicated
+</li>
+<li>Deft <sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>
+</li>
+<li>Dpaste.el
+</li>
+<li>Elpy
+</li>
+<li>Exec-path-from-shell <sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>
+</li>
+<li>Fill-column-indicator
+</li>
+<li>Gist
+</li>
+<li>Git-gutter
+</li>
+<li>ibuffer-vc
+</li>
+<li>ido-vertical-mode
+</li>
+<li>Less-css-mode
+</li>
+<li>Magit
+</li>
+<li>Markdown <sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup>
+</li>
+<li>Org-bullets <sup><a id="fnr.6" name="fnr.6" class="footref" href="#fn.6">6</a></sup>
+</li>
+<li>Org-mode
+</li>
+<li>Paredit
+</li>
+<li>PHP-mode
+</li>
+<li>Projectile
+</li>
+<li>Pyenv-mode-auto <sup><a id="fnr.7" name="fnr.7" class="footref" href="#fn.7">7</a></sup>
+</li>
+<li>Rainbow-mode
+</li>
+<li>Sass mode
+</li>
+<li>Smex
+</li>
+<li>Virtualenvwrapper
+</li>
+<li>Web-mode
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Setup package manager for emacs modes.</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+After looking at the options I'm using Marmalade.  I don't want to be using
+bleeding edge which it seems MELPA uses since it links directly the git repos.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">package</span>)
+<span style="color: #656565;">;; </span><span style="color: #757575;">Add the original Emacs Lisp Package Archive</span>
+(add-to-list 'package-archives
+             '(<span style="color: #bdbc61;">"elpa"</span> . <span style="color: #bdbc61;">"http://tromey.com/elpa/"</span>))
+<span style="color: #656565;">;; </span><span style="color: #757575;">Add the user-contributed repository</span>
+(add-to-list 'package-archives
+             '(<span style="color: #bdbc61;">"marmalade"</span> . <span style="color: #bdbc61;">"http://marmalade-repo.org/packages/"</span>))
+(add-to-list 'package-archives
+         '(<span style="color: #bdbc61;">"melpa"</span> . <span style="color: #bdbc61;">"http://melpa.milkbox.net/packages/"</span>))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Set the theme and consider the custom theme safe.</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(package-initialize)
+(load-theme 'ample t t)
+(enable-theme 'ample)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Backups in the current directory are annoying.</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Let's move those to a central location.  I'm not worried about disk space here.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">setq</span> backup-directory-alist '((<span style="color: #bdbc61;">"."</span> . <span style="color: #bdbc61;">"~/.emacs.d/backups"</span>)))
+(<span style="color: #5180b3;">setq</span> delete-old-versions -1)
+(<span style="color: #5180b3;">setq</span> version-control t)
+(<span style="color: #5180b3;">setq</span> vc-make-backup-files t)
+(<span style="color: #5180b3;">setq</span> auto-save-file-name-transforms '((<span style="color: #bdbc61;">".*"</span> <span style="color: #bdbc61;">"~/.emacs.d/auto-save-list/"</span> t)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Dedicated</h3>
+<div class="outline-text-3" id="text-1-6">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">dedicated</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Windows Configuration</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Hide things when emacs starts up, namely the tooltips, toolbar dn scrollbar.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">when</span> window-system
+  (tooltip-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode 1)
+  (scroll-bar-mode -1))
+
+<span style="color: #656565;">;; </span><span style="color: #757575;">Turn on winner mode for C-c &lt;&gt; window toggling.</span>
+(winner-mode 1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Basics and general settings</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+Show line number in the left gutter and highlight current line
+Set default tabs to 4.  Highlight line.  There are a number of
+packages for highlighting the current line but hi-line is already
+included and works fine.  No more cruft than needed.
+Mark the column at 80 for python.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">; </span><span style="color: #757575;">Set user full name</span>
+(<span style="color: #5180b3;">setq</span> user-full-name <span style="color: #bdbc61;">"Greg Newman"</span>)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">dpaste.el custom key</span>
+(global-set-key (kbd <span style="color: #bdbc61;">"C-c p"</span>) 'dpaste-region-or-buffer)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">Set line numbers</span>
+(global-linum-mode 1)
+(<span style="color: #5180b3;">setq</span> linum-format <span style="color: #bdbc61;">"%d "</span>)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">i hate tabs</span>
+(<span style="color: #5180b3;">setq-default</span> indent-tabs-mode nil)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">column numbers</span>
+(<span style="color: #5180b3;">setq</span> column-number-mode  t)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">highlight current line</span>
+(global-hl-line-mode 1)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">default tab width</span>
+(<span style="color: #5180b3;">setq-default</span> default-tab-width 4)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">show lines that are longer than 79 columns</span>
+(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">whitespace</span>)
+(<span style="color: #5180b3;">setq</span> whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">dont friggin beep at me!</span>
+(<span style="color: #5180b3;">setq</span> ring-bell-function (<span style="color: #5180b3;">lambda</span> ()))
+
+<span style="color: #656565;">; </span><span style="color: #757575;">dont show startup screen</span>
+<span style="color: #656565;">;</span><span style="color: #757575;">(setq inhibit-startup-screen t</span>
+<span style="color: #656565;">;      </span><span style="color: #757575;">initial-major-mode 'fundamental-mode)</span>
+
+<span style="color: #656565;">; </span><span style="color: #757575;">confirm when killing emacs.</span>
+(<span style="color: #5180b3;">when</span> (window-system)
+  (<span style="color: #5180b3;">setq</span> confirm-kill-emacs 'yes-or-no-p))
+
+<span style="color: #656565;">; </span><span style="color: #757575;">only type y instead of yes</span>
+(fset 'yes-or-no-p 'y-or-n-p)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">require a new line at the end of files</span>
+(<span style="color: #5180b3;">setq</span> require-final-newline t)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">Uniquify buffers, using angle brackets, so you get foo and foo&lt;2&gt;:</span>
+(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">uniquify</span>)
+(<span style="color: #5180b3;">setq</span> uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">Desktop setup.  I'm using multiple macs and using emacs --deamon</span>
+<span style="color: #656565;">; </span><span style="color: #757575;">so i'm concatinating the desktop name with the system name so the other</span>
+<span style="color: #656565;">; </span><span style="color: #757575;">macs have their own desktop file-name.</span>
+(desktop-save-mode 1)
+(<span style="color: #5180b3;">setq</span> desktop-dirname <span style="color: #bdbc61;">"~/.emacs.d/desktops/"</span>)
+(<span style="color: #5180b3;">setq</span> desktop-base-file-name (concat <span style="color: #bdbc61;">".desktop."</span> (system-name)))
+(<span style="color: #5180b3;">setq</span> desktop-path (list desktop-dirname))
+(<span style="color: #5180b3;">setq</span> desktop-base-lock-name <span style="color: #bdbc61;">"lock"</span>)
+(<span style="color: #5180b3;">setq</span> desktop-load-locked-desktop t)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">use Ubuntu mono</span>
+(set-frame-font <span style="color: #bdbc61;">"Ubuntu Mono 12"</span>)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">increase the line spacing</span>
+(<span style="color: #5180b3;">setq-default</span> line-spacing 5)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">don't show fringe</span>
+<span style="color: #656565;">;; </span><span style="color: #757575;">(setq overflow-newline-into-fringe nil)</span>
+(fringe-mode 4)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">SMEX</span>
+(global-set-key (kbd <span style="color: #bdbc61;">"M-x"</span>) 'smex)
+(global-set-key (kbd <span style="color: #bdbc61;">"M-X"</span>) 'smex-major-mode-commands)
+<span style="color: #656565;">;; </span><span style="color: #757575;">This is your old M-x.</span>
+(global-set-key (kbd <span style="color: #bdbc61;">"C-c C-c M-x"</span>) 'execute-extended-command)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">Projectile</span>
+(projectile-global-mode)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">Git Gutter</span>
+(global-git-gutter-mode +1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Frame location</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+I hate that emacs opens at the top left of my screen and a tiny
+frame.  SEt a default width, height and location
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">setq</span> initial-frame-alist '((top . 30)
+                            (left . 30)
+                            (width . 180)
+                            (height . 60)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Python / Elpy</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+Starting with just Elpy.  As I feel I need to replicate the setup
+I had with WingIDE I'll modify this.  I tried to setup Anaconda but there's
+inherent problems with my El Capitan homebrew setup of python and pip that
+prevents it from running in the Emacs GUI.  It works fine in terminal.  Trying
+out Elpy to see if that has issues.  I love the fact that Elpy is on
+readthedocs.org!!
+</p>
+<ul class="org-ul">
+<li>Documentation: <a href="http://elpy.readthedocs.org/en/latest/ide.html">http://elpy.readthedocs.org/en/latest/ide.html</a>
+</li>
+</ul>
+
+<p>
+When starting emacs gui, the paths are not read from .zshrc
+Using `exec-path-from-shell` fixes this.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(exec-path-from-shell-initialize)
+</pre>
+</div>
+
+<p>
+I'm using pyenv and pyenv-virtualenv for managing python version
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(pyenv-mode)
+</pre>
+</div>
+
+<p>
+When opening a python file, look for a .python-version file and activate
+the virtualenv. <sup><a id="fnr.8" name="fnr.8" class="footref" href="#fn.8">8</a></sup>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">defun</span> <span style="color: #6aaf50;">ssbb-pyenv-hook</span> ()
+<span style="color: #7d7c61;">"Automatically activates pyenv version if .python-version file exists."</span>
+(f-traverse-upwards
+(<span style="color: #5180b3;">lambda</span> (path)
+  (<span style="color: #5180b3;">let</span> ((pyenv-version-path (f-expand <span style="color: #bdbc61;">".python-version"</span> path)))
+    (<span style="color: #5180b3;">if</span> (f-exists? pyenv-version-path)
+        (pyenv-mode-set (s-trim (f-read-text pyenv-version-path 'utf-8))))))))
+
+(add-hook 'find-file-hook 'ssbb-pyenv-hook)
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">; </span><span style="color: #757575;">I'm using pyenv python so add shims path to exec-path</span>
+(add-to-list 'exec-path <span style="color: #bdbc61;">"~/.pyenv/shims"</span>)
+
+(package-initialize)
+(elpy-enable)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">Debugging flymake</span>
+<span style="color: #656565;">; </span><span style="color: #757575;">(setq flymake-log-level 3)</span>
+
+<span style="color: #656565;">; </span><span style="color: #757575;">Use Jedi instead of buggy Rope</span>
+(<span style="color: #5180b3;">setq</span> elpy-rpc-backend <span style="color: #bdbc61;">"jedi"</span>)
+(<span style="color: #5180b3;">setq</span> python-check-command (expand-file-name <span style="color: #bdbc61;">"/Users/greg/.pyenv/shims/flake8"</span>))
+(<span style="color: #5180b3;">setq</span> python-check-command <span style="color: #bdbc61;">"flake8"</span>)
+
+<span style="color: #656565;">; </span><span style="color: #757575;">cleanup whitespace on save.  This is run as a before-save-hook</span>
+<span style="color: #656565;">; </span><span style="color: #757575;">because it would throw flake8 errors on after-save-hook</span>
+(add-hook 'before-save-hook 'whitespace-cleanup)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> HTML and JS</h3>
+<div class="outline-text-3" id="text-1-11">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">web-mode</span>)
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.hb\\.html\\'"</span> . web-mode))
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.phtml\\'"</span> . web-mode))
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.tpl\\.php\\'"</span> . web-mode))
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.jsp\\'"</span> . web-mode))
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.as[cp]x\\'"</span> . web-mode))
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.erb\\'"</span> . web-mode))
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.html\\'"</span> . web-mode))
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.hbs\\'"</span> . web-mode))
+
+<span style="color: #656565;">;; </span><span style="color: #757575;">everything is indented 4 spaces</span>
+(<span style="color: #5180b3;">setq</span> web-mode-markup-indent-offset 2)
+(<span style="color: #5180b3;">setq</span> web-mode-css-indent-offset 2)
+(<span style="color: #5180b3;">setq</span> web-mode-code-indent-offset 4)
+
+(<span style="color: #5180b3;">setq</span> js-indent-level 2)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> IDO, ibuffer &amp; iMenu</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+Because it saves time
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">;; </span><span style="color: #757575;">IDO rules</span>
+(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">ido</span>)
+(ido-mode t)
+(<span style="color: #5180b3;">setq</span> ido-enable-flex-matching t)
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">defun</span> <span style="color: #6aaf50;">ido-goto-symbol</span> (<span style="color: #cd5542;">&amp;optional</span> symbol-list)
+   <span style="color: #7d7c61;">"Refresh imenu and jump to a place in the buffer using Ido."</span>
+   (<span style="color: #5180b3;">interactive</span>)
+   (<span style="color: #5180b3;">unless</span> (<span style="color: #5180b3;">featurep</span> '<span style="color: #ab75c3;">imenu</span>)
+     (<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">imenu</span> nil t))
+   (<span style="color: #5180b3;">cond</span>
+    ((not symbol-list)
+     (<span style="color: #5180b3;">let</span> ((ido-mode ido-mode)
+           (ido-enable-flex-matching
+            (<span style="color: #5180b3;">if</span> (boundp 'ido-enable-flex-matching)
+                ido-enable-flex-matching t))
+           name-and-pos symbol-names position)
+       (<span style="color: #5180b3;">unless</span> ido-mode
+         (ido-mode 1)
+         (<span style="color: #5180b3;">setq</span> ido-enable-flex-matching t))
+       (<span style="color: #5180b3;">while</span> (<span style="color: #5180b3;">progn</span>
+                (imenu--cleanup)
+                (<span style="color: #5180b3;">setq</span> imenu--index-alist nil)
+                (ido-goto-symbol (imenu--make-index-alist))
+                (<span style="color: #5180b3;">setq</span> selected-symbol
+                      (ido-completing-read <span style="color: #bdbc61;">"Symbol? "</span> symbol-names))
+                (string= (car imenu--rescan-item) selected-symbol)))
+       (<span style="color: #5180b3;">unless</span> (<span style="color: #5180b3;">and</span> (boundp 'mark-active) mark-active)
+         (push-mark nil t nil))
+       (<span style="color: #5180b3;">setq</span> position (cdr (assoc selected-symbol name-and-pos)))
+       (<span style="color: #5180b3;">cond</span>
+        ((overlayp position)
+         (goto-char (overlay-start position)))
+        (t
+         (goto-char position)))))
+    ((listp symbol-list)
+     (<span style="color: #5180b3;">dolist</span> (symbol symbol-list)
+       (<span style="color: #5180b3;">let</span> (name position)
+         (<span style="color: #5180b3;">cond</span>
+          ((<span style="color: #5180b3;">and</span> (listp symbol) (imenu--subalist-p symbol))
+           (ido-goto-symbol symbol))
+          ((listp symbol)
+           (<span style="color: #5180b3;">setq</span> name (car symbol))
+           (<span style="color: #5180b3;">setq</span> position (cdr symbol)))
+          ((stringp symbol)
+           (<span style="color: #5180b3;">setq</span> name symbol)
+           (<span style="color: #5180b3;">setq</span> position
+                 (get-text-property 1 'org-imenu-marker symbol))))
+         (<span style="color: #5180b3;">unless</span> (<span style="color: #5180b3;">or</span> (null position) (null name)
+                     (string= (car imenu--rescan-item) name))
+           (add-to-list 'symbol-names name)
+           (add-to-list 'name-and-pos (cons name position))))))))
+
+ (global-set-key (kbd <span style="color: #bdbc61;">"C-x C-i"</span>) 'ido-goto-symbol)
+
+ (add-hook 'ibuffer-hook
+  (<span style="color: #5180b3;">lambda</span> ()
+    (ibuffer-vc-set-filter-groups-by-vc-root)
+    (<span style="color: #5180b3;">unless</span> (eq ibuffer-sorting-mode 'alphabetic)
+      (ibuffer-do-sort-by-alphabetic))))
+
+ (<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">ido-vertical-mode</span>)
+ (ido-mode 1)
+ (ido-vertical-mode 1)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-13" class="outline-3">
+<h3 id="sec-1-13"><span class="section-number-3">1.13</span> Ace Jump Mode</h3>
+<div class="outline-text-3" id="text-1-13">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">ace-jump-mode</span>)
+(define-key global-map (kbd <span style="color: #bdbc61;">"C-c SPC"</span>) 'ace-jump-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-14" class="outline-3">
+<h3 id="sec-1-14"><span class="section-number-3">1.14</span> Deft</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+I use nValt constantly for taking notes and use Notesy on the iPhone for reading
+or doing small edits.  I'm going to try using Deft to connect to those notes and
+write them in org format.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">deft</span>)
+(<span style="color: #5180b3;">setq</span> deft-extensions '(<span style="color: #bdbc61;">"org"</span> <span style="color: #bdbc61;">"txt"</span>))
+(<span style="color: #5180b3;">setq</span> deft-directory <span style="color: #bdbc61;">"~/Dropbox/notesy"</span>)
+(<span style="color: #5180b3;">setq</span> deft-text-mode 'org-mode)
+(<span style="color: #5180b3;">setq</span> deft-use-filename-as-title t)
+(global-set-key [f1] 'deft)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-15" class="outline-3">
+<h3 id="sec-1-15"><span class="section-number-3">1.15</span> Reverting buffers</h3>
+<div class="outline-text-3" id="text-1-15">
+<p>
+Very useful if dealing with git repos and also files that can change from nValt
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-auto-revert-mode t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-16" class="outline-3">
+<h3 id="sec-1-16"><span class="section-number-3">1.16</span> Saveplace</h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+Remember my place in files across sessions
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">;; </span><span style="color: #757575;">activate it for all buffers</span>
+(save-place-mode +1)
+(<span style="color: #5180b3;">setq-default</span> save-place t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-17" class="outline-3">
+<h3 id="sec-1-17"><span class="section-number-3">1.17</span> Remember recent files</h3>
+<div class="outline-text-3" id="text-1-17">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">;; </span><span style="color: #757575;">save recent files</span>
+(<span style="color: #5180b3;">setq</span> recentf-save-file (concat user-emacs-directory <span style="color: #bdbc61;">"recentf"</span>)
+      recentf-max-saved-items 200
+      recentf-max-menu-items 15)
+(recentf-mode t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-18" class="outline-3">
+<h3 id="sec-1-18"><span class="section-number-3">1.18</span> Server-mode</h3>
+<div class="outline-text-3" id="text-1-18">
+<p>
+Emacs has this really interesting feature called server-mode. Emacs is
+notoriously slow to start (this happens if you have a giant emacs config that
+does stupid things). To combat this, you can start a single server process
+which will accept multiple clients. The server maintains the state of
+everything (files open, variables defined, processes running) and your client
+can attach / disconnect as necessary. (yanked from Justin Abrahms, thanks)
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">;</span><span style="color: #757575;">(if (not server-mode)</span>
+<span style="color: #656565;">;    </span><span style="color: #757575;">(server-start nil t))</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-19" class="outline-3">
+<h3 id="sec-1-19"><span class="section-number-3">1.19</span> iBuffer-mode</h3>
+<div class="outline-text-3" id="text-1-19">
+<p>
+I used this in the past minimally.  Need to work with it more extensively
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #bdbc61;">"C-x C-b"</span>) 'ibuffer)
+   (autoload 'ibuffer <span style="color: #bdbc61;">"ibuffer"</span> <span style="color: #7d7c61;">"List buffers."</span> t)
+
+(<span style="color: #5180b3;">setq</span> ibuffer-saved-filter-groups
+  (<span style="color: #5180b3;">quote</span> ((<span style="color: #bdbc61;">"default"</span>
+         (<span style="color: #bdbc61;">"MGH"</span> (filename . <span style="color: #bdbc61;">"/code/mgh/"</span>))
+         (<span style="color: #bdbc61;">"Duex"</span> (filename . <span style="color: #bdbc61;">"/code/duex"</span>))
+         (<span style="color: #bdbc61;">"Eldarion-Courses"</span> (filename . <span style="color: #bdbc61;">"/code/eldarion-courses/"</span>))
+         (<span style="color: #bdbc61;">"Revsys"</span> (filename . <span style="color: #bdbc61;">"/code/revyss"</span>))
+         (<span style="color: #bdbc61;">"Python"</span>
+             (mode . python-mode))
+         (<span style="color: #bdbc61;">"HTML"</span>
+             (mode . web-mode))
+         (<span style="color: #bdbc61;">"JS"</span>
+             (mode . js-mode))
+         (<span style="color: #bdbc61;">"Org"</span> <span style="color: #656565;">;; </span><span style="color: #757575;">all org-related buffers</span>
+              (mode . org-mode))
+         (<span style="color: #bdbc61;">"Lisp"</span>
+             (mode . emacs-lisp-mode)
+             )))))
+
+<span style="color: #656565;">;; </span><span style="color: #757575;">don't show empty groups</span>
+(<span style="color: #5180b3;">setq</span> ibuffer-show-empty-filter-groups nil)
+
+(add-hook 'ibuffer-mode-hook
+  (<span style="color: #5180b3;">lambda</span> ()
+    (ibuffer-switch-to-saved-filter-groups <span style="color: #bdbc61;">"default"</span>)))
+
+<span style="color: #656565;">;; </span><span style="color: #757575;">Add full path to buffer title</span>
+(<span style="color: #5180b3;">setq</span> frame-title-format
+   (list (format <span style="color: #bdbc61;">"%s %%S: %%j "</span> (system-name))
+     '(buffer-file-name <span style="color: #bdbc61;">"%f"</span> (dired-directory dired-directory <span style="color: #bdbc61;">"%b"</span>))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-20" class="outline-3">
+<h3 id="sec-1-20"><span class="section-number-3">1.20</span> Less</h3>
+<div class="outline-text-3" id="text-1-20">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(autoload 'less-css-mode <span style="color: #bdbc61;">"less-css-mode"</span> <span style="color: #7d7c61;">"Major mode for Less"</span>)
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.less$"</span> . less-css-mode))
+
+(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">rainbow-mode</span>)
+(add-hook 'css-mode-hook (<span style="color: #5180b3;">lambda</span> () (rainbow-mode 1)))
+(add-hook 'html-mode-hook (<span style="color: #5180b3;">lambda</span> () (rainbow-mode 1)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-21" class="outline-3">
+<h3 id="sec-1-21"><span class="section-number-3">1.21</span> elisp</h3>
+<div class="outline-text-3" id="text-1-21">
+<p>
+Configuration for elisp programming.
+</p>
+
+<p>
+Turn on paredit and eldoc when possible. Very useful.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-"yes"lang"yes"switches"yes"flags">"yes"body
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-22" class="outline-3">
+<h3 id="sec-1-22"><span class="section-number-3">1.22</span> Org-mode</h3>
+<div class="outline-text-3" id="text-1-22">
+<p>
+This will be a expanding collection of org customization.  I live in text
+files throughout my days and orgmode gives me a nice interface for collecting
+notes.
+</p>
+
+<p>
+Using org from the git repo to stay up to date with fixes
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">;; </span><span style="color: #757575;">activate debugging</span>
+(<span style="color: #5180b3;">setq</span> debug-on-error t
+      debug-on-signal nil
+      debug-on-quit nil)
+
+(add-to-list 'load-path <span style="color: #bdbc61;">"~/code/org-mode/contrib/lisp"</span> t)
+</pre>
+</div>
+
+<p>
+I also work on these notes in nvAlt from multiple macs so I have set txt files
+to open as org.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">;;</span><span style="color: #757575;">OPEN ALL TXT FILES IN ORGMODE</span>
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.txt$"</span> . org-mode))
+</pre>
+</div>
+
+<p>
+Org-mode is ugly with all the leading stars.  I'm going to turn those off
+and use org-bullets for a much cleaner presentation.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #656565;">;; </span><span style="color: #757575;">hide leading stars</span>
+(<span style="color: #5180b3;">setq</span> org-hide-leading-stars t)
+
+<span style="color: #656565;">;; </span><span style="color: #757575;">use org-bullets for a cleaner view</span>
+(<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">org-bullets</span>)
+(add-hook 'org-mode-hook (<span style="color: #5180b3;">lambda</span> () (org-bullets-mode 1)))
+</pre>
+</div>
+
+<p>
+Org-capture
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #5180b3;">setq</span> org-directory <span style="color: #bdbc61;">"~/Dropbox/notesy"</span>)
+(<span style="color: #5180b3;">setq</span> org-default-notes-file <span style="color: #bdbc61;">"~/Dropbox/notesy/refile.org"</span>)
+
+<span style="color: #656565;">;; </span><span style="color: #757575;">I use C-c c to start capture mode</span>
+(global-set-key (kbd <span style="color: #bdbc61;">"C-c c"</span>) 'org-capture)
+
+<span style="color: #656565;">;; </span><span style="color: #757575;">Capture templates</span>
+(<span style="color: #5180b3;">setq</span> org-capture-templates
+    (<span style="color: #5180b3;">quote</span> ((<span style="color: #bdbc61;">"n"</span> <span style="color: #bdbc61;">"note"</span> entry (file <span style="color: #bdbc61;">"~/Dropbox/notesy/refile.org"</span>)
+             <span style="color: #bdbc61;">"* %? :NOTE:\n%U\n%a\n"</span> <span style="color: #528fd1;">:clock-in</span> t <span style="color: #528fd1;">:clock-resume</span> t)
+            (<span style="color: #bdbc61;">"m"</span> <span style="color: #bdbc61;">"Meeting"</span> entry (file <span style="color: #bdbc61;">"~/Dropbox/notesy/refile.org"</span>)
+             <span style="color: #bdbc61;">"* MEETING with %? :MEETING:\n%U"</span> <span style="color: #528fd1;">:clock-in</span> t <span style="color: #528fd1;">:clock-resume</span> t)
+            (<span style="color: #bdbc61;">"p"</span> <span style="color: #bdbc61;">"Phone call"</span> entry (file <span style="color: #bdbc61;">"~/Dropbox/notesy/refile.org"</span>)
+             <span style="color: #bdbc61;">"* PHONE %? :PHONE:\n%U"</span> <span style="color: #528fd1;">:clock-in</span> t <span style="color: #528fd1;">:clock-resume</span> t))))
+
+<span style="color: #656565;">;; </span><span style="color: #757575;">enable line breaks</span>
+(add-hook 'org-mode-hook (<span style="color: #5180b3;">lambda</span> () (<span style="color: #5180b3;">setq</span> truncate-lines nil)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-23" class="outline-3">
+<h3 id="sec-1-23"><span class="section-number-3">1.23</span> Markdown</h3>
+<div class="outline-text-3" id="text-1-23">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(autoload 'markdown-mode <span style="color: #bdbc61;">"markdown-mode"</span>
+<span style="color: #7d7c61;">"Major mode for editing Markdown files"</span> t)
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.markdown$"</span> . markdown-mode))
+(add-to-list 'auto-mode-alist '(<span style="color: #bdbc61;">"\\.md$"</span> . markdown-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-24" class="outline-3">
+<h3 id="sec-1-24"><span class="section-number-3">1.24</span> Magit</h3>
+<div class="outline-text-3" id="text-1-24">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #bdbc61;">"C-x g"</span>) 'magit-status)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-25" class="outline-3">
+<h3 id="sec-1-25"><span class="section-number-3">1.25</span> Terminal</h3>
+<div class="outline-text-3" id="text-1-25">
+<p>
+Fixes for using emacs in iterm2
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">   <span style="color: #656565;">;; </span><span style="color: #757575;">Enable mouse support</span>
+   (<span style="color: #5180b3;">unless</span> window-system
+     (<span style="color: #5180b3;">require</span> '<span style="color: #ab75c3;">mouse</span>)
+     (xterm-mouse-mode t)
+     (global-set-key [mouse-4] (<span style="color: #5180b3;">lambda</span> ()
+                              (<span style="color: #5180b3;">interactive</span>)
+                              (scroll-down 1)))
+     (global-set-key [mouse-5] (<span style="color: #5180b3;">lambda</span> ()
+                              (<span style="color: #5180b3;">interactive</span>)
+                              (scroll-up 1)))
+     (<span style="color: #5180b3;">defun</span> <span style="color: #6aaf50;">track-mouse</span> (e))
+     (<span style="color: #5180b3;">setq</span> mouse-sel-mode t))
+
+   (<span style="color: #5180b3;">when</span> (eq system-type 'darwin)
+     <span style="color: #656565;">;; </span><span style="color: #757575;">terminal clipboard while inside tmux</span>
+     (<span style="color: #5180b3;">unless</span> (display-graphic-p)
+       (<span style="color: #5180b3;">when</span> (<span style="color: #5180b3;">and</span> (&gt; (length (getenv <span style="color: #bdbc61;">"TMUX"</span>)) 0) (executable-find <span style="color: #bdbc61;">"reattach-to-user-namespace"</span>))
+
+     (<span style="color: #5180b3;">defun</span> <span style="color: #6aaf50;">paste-from-osx</span> ()
+       (shell-command-to-string <span style="color: #bdbc61;">"reattach-to-user-namespace pbpaste"</span>) )
+
+     (<span style="color: #5180b3;">defun</span> <span style="color: #6aaf50;">cut-to-osx</span> (text <span style="color: #cd5542;">&amp;optional</span> push)
+       (<span style="color: #5180b3;">let</span> ((process-connection-type nil))
+         (<span style="color: #5180b3;">let</span> ((proc (start-process <span style="color: #bdbc61;">"pbcopy"</span> <span style="color: #bdbc61;">"*Messages*"</span> <span style="color: #bdbc61;">"reattach-to-user-namespace"</span> <span style="color: #bdbc61;">"pbcopy"</span>) ))
+           (process-send-string proc text)
+           (process-send-eof proc))))
+
+      (<span style="color: #5180b3;">setq</span> interprogram-cut-function 'cut-to-osx)
+      (<span style="color: #5180b3;">setq</span> interprogram-paste-function 'paste-from-osx)
+    )
+  )
+)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<a href="https://github.com/gregnewman/emacs-config">https://github.com/gregnewman/emacs-config</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+<a href="https://github.com/winterTTr/ace-jump-mode">https://github.com/winterTTr/ace-jump-mode</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+<a href="http://jblevins.org/projects/deft/">http://jblevins.org/projects/deft/</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+<a href="https://github.com/purcell/exec-path-from-shell">https://github.com/purcell/exec-path-from-shell</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p class="footpara">
+<a href="http://jblevins.org/projects/markdown-mode/">http://jblevins.org/projects/markdown-mode/</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.6" name="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p class="footpara">
+<a href="https://github.com/sabof/org-bullets">https://github.com/sabof/org-bullets</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.7" name="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p class="footpara">
+<a href="https://github.com/proofit404/pyenv-mode">https://github.com/proofit404/pyenv-mode</a>
+</p></div>
+
+<div class="footdef"><sup><a id="fn.8" name="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p class="footpara">
+<a href="http://ssbb.me/emacs-pyenv-auto-activation-en.html">http://ssbb.me/emacs-pyenv-auto-activation-en.html</a>
+</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Greg Newman</p>
+<p class="date">Created: 2017-03-12 Sun 19:41</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
