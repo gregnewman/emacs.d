@@ -1,2 +1,2 @@
 # emacs-config
-[Detailed info here](https://github.com/gregnewman/emacs.d/blob/master/greg.html)
+[Detailed info here](http://htmlpreview.github.io/?https://github.com/gregnewman/emacs.d/master/greg.html)
