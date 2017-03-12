@@ -1,2 +1,2 @@
 # emacs-config
-Going back to emacs and starting from scratch
+[Detailed info here](https://github.com/gregnewman/emacs.d/blob/master/greg.html)
