@@ -7,9 +7,9 @@
    way to keep things organized.  I can keep a long config file in outline
    form for readability. This emacs config file is hosted on Github [fn:1]
 
-** TODOs
-   - nothing right now
-
+** TODO TODOs
+   - Add new org-mode configs
+   - Clean this file up and refactor it.
 ** Packages I have installed
    - Ace jump mode [fn:2]
    - Ample Theme
