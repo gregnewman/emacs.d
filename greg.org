@@ -7,9 +7,11 @@
    way to keep things organized.  I can keep a long config file in outline
    form for readability. This emacs config file is hosted on Github [fn:1]
 
-** TODO TODOs
-   - Add new org-mode configs
-   - Clean this file up and refactor it.
+** Things to do to this file
+*** TODO Add new org-mode configs
+*** TODO Clean this file up and refactor it.
+*** TODO Reduce the frequence of the code blocks
+
 ** Packages I have installed
    - Ace jump mode [fn:2]
    - Ample Theme
@@ -505,6 +507,77 @@
    ;; use org-bullets for a cleaner view
    (require 'org-bullets)
    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+   ;; Keywords
+   (setq org-todo-keywords
+   '((sequence
+    "TODO(t)"
+    "STARTED(s)"
+    "WAITING(w@/!)"
+    "SOMEDAY(.)" "|" "DONE(x!)" "CANCELLED(c@)")
+   (sequence "LEARN" "TRY" "TEACH" "|" "COMPLETE(x)")
+   (sequence "TOSKETCH" "SKETCHED" "|" "POSTED")))
+
+   (setq org-todo-keyword-faces
+      '(("TODO" . (:foreground "green" :weight bold))
+        ("DONE" . (:foreground "cyan" :weight bold))
+        ("WAITING" . (:foreground "red" :weight bold))
+        ("SOMEDAY" . (:foreground "gray" :weight bold))))
+
+   (setq org-log-done 'time)
+
+   ;; tags
+   (setq org-tag-alist '(("@work" . ?b)
+                      ("@home" . ?h)
+                      ("@writing" . ?w)
+                      ("@errands" . ?e)
+                      ("@drawing" . ?d)
+                      ("@coding" . ?c)
+                      ("@phone" . ?p)
+                      ("@reading" . ?r)
+                      ("@computer" . ?s)
+                      ("@studio" . ?q)
+                      ("thinking" . ?t)
+                      ("highenergy" . ?1)))
+
+   ;; efforts
+   (add-to-list 'org-global-properties
+      '("Effort_ALL". "0:05 0:15 0:30 1:00 2:00 3:00 4:00 6:00 8:00"))
+
+   ;; agenda files
+   (setq org-agenda-files
+      (delq nil
+            (mapcar (lambda (x) (and (file-exists-p x) x))
+                    `("~/Dropbox/notesy/learning.org"
+                      "~/Dropbox/notesy/book_notes.org"
+                      "~/Dropbox/notesy/eldarion_mgh.org"
+                      "~/Dropbox/notesy/goals_bucket_list.org"
+                      "~/Dropbox/notesy/machine_learning.org"
+                      "~/Dropbox/notesy/thoughts.org"
+                      "~/Dropbox/notesy/people.org"
+                      "~/.emacs.d/greg.org"
+                      "~/Dropbox/notesy/routines.org"))))
+
+   ;; agenda
+   (setq org-agenda-span 5)
+   (setq org-agenda-tags-column -100) ; take advantage of the screen width
+   (setq org-agenda-sticky nil)
+   (setq org-agenda-inhibit-startup t)
+   (setq org-agenda-use-tag-inheritance t)
+   (setq org-agenda-show-log t)
+   (setq org-agenda-skip-scheduled-if-done t)
+   (setq org-agenda-skip-deadline-if-done t)
+   (setq org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled)
+   (setq org-agenda-time-grid
+      '((daily today require-timed)
+       "----------------"
+       (800 1000 1200 1400 1600 1800)))
+   (setq org-columns-default-format "%14SCHEDULED %Effort{:} %1PRIORITY %TODO %50ITEM %TAGS")
+
+   ;; The following lines are always needed.  Choose your own keys.
+   (global-set-key "\C-cl" 'org-store-link)
+   (global-set-key "\C-ca" 'org-agenda)
+   (global-set-key "\C-cb" 'org-iswitchb)
    #+end_src
 
    Org-capture
