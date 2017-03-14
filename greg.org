@@ -533,6 +533,7 @@
                       ("@errands" . ?e)
                       ("@drawing" . ?d)
                       ("@coding" . ?c)
+                      ("@learning" . ?l)
                       ("@phone" . ?p)
                       ("@reading" . ?r)
                       ("@computer" . ?s)
@@ -556,7 +557,10 @@
                       "~/Dropbox/notesy/thoughts.org"
                       "~/Dropbox/notesy/people.org"
                       "~/.emacs.d/greg.org"
-                      "~/Dropbox/notesy/routines.org"))))
+                      "~/Dropbox/notesy/org-mode.org"
+                      "~/Dropbox/notesy/routines.org"
+                      "~/Dropbox/notesy/refile.org"
+                      "~/Dropbox/notesy/workouts.org"))))
 
    ;; agenda
    (setq org-agenda-span 5)
