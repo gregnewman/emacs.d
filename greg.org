@@ -153,6 +153,14 @@
    (require 'uniquify)
    (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
+   ; auto-save buffer state
+   (desktop-save-mode 1)
+   (setq desktop-dirname "~/.emacs.d/desktops/default/"
+	      desktop-base-file-name "emacs.desktop"
+	      desktop-base-lock-name "lock"
+	      desktop-path (list desktop-dirname)
+	      desktop-load-locked-desktop t)
+
    ; Desktop setup.  I'm using multiple macs and using emacs --deamon
    ; so i'm concatinating the desktop name with the system name so the other
    ; macs have their own desktop file-name.
