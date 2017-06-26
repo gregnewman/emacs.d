@@ -172,7 +172,7 @@
    (setq desktop-load-locked-desktop t)
 
    ; use Ubuntu mono
-   (set-frame-font "Ubuntu Mono 12")
+   (set-frame-font "Ubuntu Mono 16")
 
    ; increase the line spacing
    (setq-default line-spacing 5)
@@ -664,6 +664,17 @@
   )
 )
    #+end_src
+
+** Slime
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
+   (setq inferior-lisp-program "/usr/local/bin/sbcl")
+   (require 'slime)
+   (slime-setup)
+
+   #+end_src
+
 * Footnotes
 
 [fn:1] https://github.com/gregnewman/emacs-config
